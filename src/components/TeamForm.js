@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import Confirm from './Confirm';
 
 const TeamForm = () => {
   const useStyles = makeStyles(theme => ({
@@ -85,6 +86,8 @@ const TeamForm = () => {
 
   const classes = useStyles();
 
+  const [formView, setFormView] = useState(true)
+  const [data, setData] = useState({})
   //----------- Function to handle form submission -----------
   const handleSubmission = (event) => {
     // Handle the form submission.
@@ -93,7 +96,8 @@ const TeamForm = () => {
       alert('Please fill the events you want to participate in.')
       return
     }
-    const data = {
+
+    const inputData = {
       name: document.getElementById('name-leader').value,
       email: document.getElementById('email').value,
       teamMemberCount: document.getElementById('member-count').value,
@@ -104,12 +108,27 @@ const TeamForm = () => {
     }
     // Run a loop to collect the names of the team-members
     for (let i = 0; i < additionalTeamMembers; i++) {
-      data.teamMemberName.push(document.getElementById(`member-name${i}`).value)
+      inputData.teamMemberName.push(document.getElementById(`member-name${i}`).value)
     }
 
-    alert(JSON.stringify(data))
+    setData(inputData)
+    setFormView(false)
   }
-  //----------------------------------------------------------------
+
+  // Event-handler for edit button click
+  const handleEdit = () => {
+    setFormView(true)
+  }
+
+  // Event-handler for proceed button click
+  const submitForm = () => {
+    console.log('Clicked')
+    /*
+    -
+    - Write the code to push the userInput to database inside this function.
+    -
+    */
+  }
 
   // ----Event handler for member count input----
   const handleTeamNumberChange = (event) => {
@@ -131,8 +150,6 @@ const TeamForm = () => {
     
   const handleChangeMultiple = event => {
     setChoosenEvents(event.target.value)
-    console.log(choosenEvents)
-    // console.log(event.target.value)
   };
   
   const [additionalTeamMembers, setAdditionalMembers] = React.useState('')
@@ -144,44 +161,60 @@ const TeamForm = () => {
     return inputFields
   }
 
-  return(
-    <form className={classes.root} Validate autoComplete="off" onSubmit={handleSubmission}>
-      <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required />
-      <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required />
-      <TextField id="member-count" label="Members count (excluding leader)" variant="outlined" 
-      type="number" InputProps={{ inputProps: { min: 1} }} fullWidth={true} value={additionalTeamMembers}
-      onChange={handleTeamNumberChange} required />
-      {generateNameFields(additionalTeamMembers)}
-      {/*Dropdopwn for events*/}
-      <InputLabel id="mutiple-event-label">Events*</InputLabel>
-      <Select
-      labelId="mutiple-event-label"
-      id="mutiple-events"
-      multiple
-      value={choosenEvents}
-      onChange={handleChangeMultiple}
-      input={<Input />}
-      fullWidth={true}
-      required
-      >
-      {sportsEvents.map(event=> (
-        <MenuItem key={event} value={event}>
-        {event}
-        </MenuItem>
-      ))}
-      </Select>
-      {/*-------------------*/}
-      <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
-      <FormControlLabel control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
-      label="Check here if you need accommodation"
-      />
-      {/*---Submit button---*/}
-      <Button variant="contained" color="secondary" type="submit">
-      Submit
-      </Button>
-      {/*------------------*/}
-    </form>
-  )
+  if (formView) {
+    return(
+      <form className={classes.root} Validate autoComplete="off" onSubmit={handleSubmission}>
+        <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required />
+        <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required />
+        <TextField id="member-count" label="Members count (excluding leader)" variant="outlined" 
+        type="number" InputProps={{ inputProps: { min: 1} }} fullWidth={true} value={additionalTeamMembers}
+        onChange={handleTeamNumberChange} required />
+        {generateNameFields(additionalTeamMembers)}
+        {/*Dropdopwn for events*/}
+        <InputLabel id="mutiple-event-label">Events*</InputLabel>
+        <Select
+        labelId="mutiple-event-label"
+        id="mutiple-events"
+        multiple
+        value={choosenEvents}
+        onChange={handleChangeMultiple}
+        input={<Input />}
+        fullWidth={true}
+        required
+        >
+        {sportsEvents.map(event=> (
+          <MenuItem key={event} value={event}>
+          {event}
+          </MenuItem>
+        ))}
+        </Select>
+        {/*-------------------*/}
+        <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
+        <FormControlLabel control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
+        label="Check here if you need accommodation"
+        />
+        {/*---Submit button---*/}
+        <Button variant="contained" color="secondary" type="submit">
+        Submit
+        </Button>
+        {/*------------------*/}
+      </form>
+    )
+
+  } else {
+
+    return(
+      <React.Fragment>
+        <Confirm data={data} />
+        <Button variant="contained" color="primary" onClick={handleEdit}>
+          Edit
+        </Button>
+        <Button variant="contained" color="secondary" onClick={submitForm}>
+          Proceed
+        </Button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default TeamForm

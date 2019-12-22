@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import Confirm from './Confirm'
 
 const SingleForm = () => {
   const useStyles = makeStyles(theme => ({
@@ -100,9 +101,10 @@ const SingleForm = () => {
 
   const handleChangeMultiple = event => {
     setChoosenEvents(event.target.value)
-    console.log(choosenEvents)
-    // console.log(event.target.value)
   };
+
+  const [formView, setFormView] = useState(true)
+  const [data, setData] = useState({})
 
   // Function for handling form submissions.
   const handleSubmission = (event) => {
@@ -112,7 +114,9 @@ const SingleForm = () => {
       alert('Please fill the events you want to participate in.')
       return
     }
-    const data = {
+
+    const inputData = {
+      single: true,
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       teamMemberCount: 0,
@@ -121,46 +125,79 @@ const SingleForm = () => {
       college: document.getElementById('college').value,
       stay: document.getElementById('stay-check').checked,
     }
-    
-    alert(JSON.stringify(data))
+    setData(inputData)
+
+    setFormView(false)
   }
 
-  return (
-    <form className={classes.root} autoComplete="off" onSubmit={handleSubmission} >
-      <TextField id="name" label="Name" variant="outlined" fullWidth={true} required />
-      <TextField id="email" label="Email" type="email" variant="outlined" fullWidth={true} required />
-      {/*Dropdopwn for events*/}
-      <InputLabel id="mutiple-event-label">Events*</InputLabel>
-      <Select
-        labelId="mutiple-event-label"
-        id="mutiple-events"
-        multiple
-        value={choosenEvents}
-        onChange={handleChangeMultiple}
-        input={<Input />}
-        fullWidth={true}
-        required
-      >
+  // Event-handler for edit button click
+  const handleEdit = () => {
+    setFormView(true)
+  }
 
-      {sportsEvents.map(event=> (
-        <MenuItem key={event} value={event}>
-          {event}
-        </MenuItem>
-      ))}
+  // Event-handler for proceed button click
+  const submitForm = () => {
+    console.log('Clicked')
+    /*
+    -
+    - Write the code to push the userInput to database inside this function.
+    -
+    */
+  }
 
-      </Select>
-      {/*-------------------*/}
-      <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
-      <FormControlLabel id="stay-label" control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
-        label="Check here if you need accommodation"
-      />
-      {/*---Submit button---*/}
-      <Button variant="contained" color="secondary" type="submit">
-        Submit
-      </Button>
-      {/*------------------*/}
-    </form>
-  )
+  if (formView) {
+    return (
+      <form className={classes.root} autoComplete="off" onSubmit={handleSubmission} >
+        <TextField id="name" label="Name" variant="outlined" fullWidth={true} required />
+        <TextField id="email" label="Email" type="email" variant="outlined" fullWidth={true} required />
+        {/*Dropdopwn for events*/}
+        <InputLabel id="mutiple-event-label">Events*</InputLabel>
+        <Select
+          labelId="mutiple-event-label"
+          id="mutiple-events"
+          multiple
+          value={choosenEvents}
+          onChange={handleChangeMultiple}
+          input={<Input />}
+          fullWidth={true}
+          required
+        >
+
+        {sportsEvents.map(event=> (
+          <MenuItem key={event} value={event}>
+            {event}
+          </MenuItem>
+        ))}
+
+        </Select>
+        {/*-------------------*/}
+        <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
+        <FormControlLabel id="stay-label" control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
+          label="Check here if you need accommodation"
+        />
+        {/*---Submit button---*/}
+        <Button variant="contained" color="secondary" type="submit">
+          Submit
+        </Button>
+        {/*------------------*/}
+      </form>
+    )
+
+  } else {
+
+    return(
+      <React.Fragment>
+        <Confirm data={data} />
+        <Button variant="contained" color="primary" onClick={handleEdit}>
+          Edit
+        </Button>
+        <Button variant="contained" color="secondary" onClick={submitForm}>
+          Proceed
+        </Button>
+      </React.Fragment>
+    )
+
+  }
 }
 
   export default SingleForm
