@@ -103,7 +103,33 @@ const SingleForm = () => {
     setChoosenEvents(event.target.value)
   };
 
+  // States to handle input from text-field.
+  const [nameInput, setNameInput] = useState('')
+  const [emailInput, setEmailInput] = useState('')
+  const [collegeInput, setCollegeInput] = useState('')
+  const [stayInput, setStayInput] = useState(false)
+
+  // Event handler for text-field input change
+  const handleNameInputChange = (event) => {
+    setNameInput(event.target.value)
+  }
+
+  const handleEmailInputChange = (event) => {
+    setEmailInput(event.target.value)
+  }
+
+  const handleCollegeInputChange = (event) => {
+    setCollegeInput(event.target.value)
+  }
+
+  const handleStayInputChange = (event) => {
+    setStayInput(event.target.checked)
+  }
+
+  // State to toggle between form view & confirmation view.
   const [formView, setFormView] = useState(true)
+
+  // State to hold the user entered data.
   const [data, setData] = useState({})
 
   // Function for handling form submissions.
@@ -117,13 +143,13 @@ const SingleForm = () => {
 
     const inputData = {
       single: true,
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
+      name: nameInput,
+      email: emailInput,
       teamMemberCount: 0,
       teamMemberName: null,
       events: choosenEvents,
-      college: document.getElementById('college').value,
-      stay: document.getElementById('stay-check').checked,
+      college: collegeInput,
+      stay: stayInput,
     }
     setData(inputData)
 
@@ -148,8 +174,10 @@ const SingleForm = () => {
   if (formView) {
     return (
       <form className={classes.root} autoComplete="off" onSubmit={handleSubmission} >
-        <TextField id="name" label="Name" variant="outlined" fullWidth={true} required />
-        <TextField id="email" label="Email" type="email" variant="outlined" fullWidth={true} required />
+        <TextField id="name" label="Name" variant="outlined" fullWidth={true} required
+        value={nameInput} onChange={handleNameInputChange} />
+        <TextField id="email" label="Email" type="email" variant="outlined" fullWidth={true} required
+        value={emailInput} onChange={handleEmailInputChange} />
         {/*Dropdopwn for events*/}
         <InputLabel id="mutiple-event-label">Events*</InputLabel>
         <Select
@@ -171,9 +199,11 @@ const SingleForm = () => {
 
         </Select>
         {/*-------------------*/}
-        <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
-        <FormControlLabel id="stay-label" control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
-          label="Check here if you need accommodation"
+        <TextField id="college" label="College" variant="outlined" fullWidth={true} required 
+        value={collegeInput} onChange={handleCollegeInputChange} />
+        <FormControlLabel id="stay-label"
+         control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} checked={stayInput} onChange={handleStayInputChange} />}
+         label="Check here if you need accommodation"
         />
         {/*---Submit button---*/}
         <Button variant="contained" color="secondary" type="submit">
