@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import {render} from 'react-dom';
 import App from './App';
-import TeamForm from './TeamForm'
-import SingleForm from './SingleForm'
-import Confirm from './Confirm'
+import TeamForm from './components/TeamForm'
+import SingleForm from './components/SingleForm'
+import Confirm from './components/Confirm'
 import {Route, Link, HashRouter as Router} from 'react-router-dom'
 
 const routing = (
