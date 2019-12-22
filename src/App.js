@@ -93,17 +93,17 @@ const useStyles = makeStyles(theme => ({
   },
   overlay: {
     position:'absolute',
-    width: '100%',
+    width: '99.09%',
     height: '90vh',
     backgroundColor:'black',
     zIndex:1,
     opacity:0.5,
   },
   textcontainer: {
-    padding: '16px 32px',
     position: 'absolute',
-    marginLeft:650,
-    marginTop:300,
+    top:'45%',
+    left:'30%',
+    right:'30%',
     color: 'white',
     border: 'solid',
     borderColor:'white',
@@ -144,7 +144,10 @@ export default function ButtonAppBar() {
         </Toolbar>
       </AppBar>
     </div>
-    <div className={classes.textcontainer}><Typography variant="h1" className={classes.title} align='center' color="textPrimary">AAHVAAN</Typography></div>
+    <div className={classes.textcontainer} align="center">
+      <Typography variant="h1" className={classes.title} align='center' color="textPrimary">AAHVAAN
+      </Typography>
+      </div>
     <div className={classes.overlay}>
     </div>
     <Paper>
