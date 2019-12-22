@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/aahvaan_new/static/js/main.d1e7d9f8.chunk.js",
-    "main.js.map": "/aahvaan_new/static/js/main.d1e7d9f8.chunk.js.map",
+    "main.js": "/aahvaan_new/static/js/main.6d27249c.chunk.js",
+    "main.js.map": "/aahvaan_new/static/js/main.6d27249c.chunk.js.map",
     "runtime-main.js": "/aahvaan_new/static/js/runtime-main.ff963023.js",
     "runtime-main.js.map": "/aahvaan_new/static/js/runtime-main.ff963023.js.map",
     "static/js/2.3b4f1966.chunk.js": "/aahvaan_new/static/js/2.3b4f1966.chunk.js",
     "static/js/2.3b4f1966.chunk.js.map": "/aahvaan_new/static/js/2.3b4f1966.chunk.js.map",
     "index.html": "/aahvaan_new/index.html",
-    "precache-manifest.698c95d93f8e01c58bea1f478b47c39c.js": "/aahvaan_new/precache-manifest.698c95d93f8e01c58bea1f478b47c39c.js",
+    "precache-manifest.052f7a82f535cec10a78bc625c11bdc5.js": "/aahvaan_new/precache-manifest.052f7a82f535cec10a78bc625c11bdc5.js",
     "service-worker.js": "/aahvaan_new/service-worker.js",
     "static/js/2.3b4f1966.chunk.js.LICENSE": "/aahvaan_new/static/js/2.3b4f1966.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.ff963023.js",
     "static/js/2.3b4f1966.chunk.js",
-    "static/js/main.d1e7d9f8.chunk.js"
+    "static/js/main.6d27249c.chunk.js"
   ]
 }
