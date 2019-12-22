@@ -86,7 +86,38 @@ const TeamForm = () => {
 
   const classes = useStyles();
 
+  // States to handle input from text-field.
+  const [nameInput, setNameInput] = useState('')
+  const [emailInput, setEmailInput] = useState('')
+  const [collegeInput, setCollegeInput] = useState('')
+  const [stayInput, setStayInput] = useState(false)
+  const [additionalTeamMembers, setAdditionalMembers] = React.useState('')
+
+  // Event handler for text-field input change
+  const handleNameInputChange = (event) => {
+    setNameInput(event.target.value)
+  }
+
+  const handleEmailInputChange = (event) => {
+    setEmailInput(event.target.value)
+  }
+
+  const handleCollegeInputChange = (event) => {
+    setCollegeInput(event.target.value)
+  }
+
+  const handleStayInputChange = (event) => {
+    setStayInput(event.target.checked)
+  }
+
+  const handleTeamNumberChange = (event) => {
+    setAdditionalMembers(event.target.value)
+  }
+
+  // State to toggle between form-view & confirmation-view
   const [formView, setFormView] = useState(true)
+
+  // State to hold the user input
   const [data, setData] = useState({})
   //----------- Function to handle form submission -----------
   const handleSubmission = (event) => {
@@ -130,11 +161,6 @@ const TeamForm = () => {
     */
   }
 
-  // ----Event handler for member count input----
-  const handleTeamNumberChange = (event) => {
-    setAdditionalMembers(event.target.value)
-  }
-    
   // Logic for the drop-down menu.
   // List of events to choose from. Change it to add the events.
   const sportsEvents = [
@@ -152,7 +178,6 @@ const TeamForm = () => {
     setChoosenEvents(event.target.value)
   };
   
-  const [additionalTeamMembers, setAdditionalMembers] = React.useState('')
   // Function to generate the field for members.
   const generateNameFields = (num) => {
     const inputFields = []
@@ -164,8 +189,10 @@ const TeamForm = () => {
   if (formView) {
     return(
       <form className={classes.root} Validate autoComplete="off" onSubmit={handleSubmission}>
-        <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required />
-        <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required />
+        <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required
+        value={nameInput} onChange={handleNameInputChange} />
+        <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required
+        value={emailInput} onChange={handleEmailInputChange} />
         <TextField id="member-count" label="Members count (excluding leader)" variant="outlined" 
         type="number" InputProps={{ inputProps: { min: 1} }} fullWidth={true} value={additionalTeamMembers}
         onChange={handleTeamNumberChange} required />
@@ -189,9 +216,11 @@ const TeamForm = () => {
         ))}
         </Select>
         {/*-------------------*/}
-        <TextField id="college" label="College" variant="outlined" fullWidth={true} required />
-        <FormControlLabel control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} />}
-        label="Check here if you need accommodation"
+        <TextField id="college" label="College" variant="outlined" fullWidth={true} required 
+        value={collegeInput} onChange={handleCollegeInputChange} />
+        <FormControlLabel id="stay-label"
+         control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} checked={stayInput} onChange={handleStayInputChange} />}
+         label="Check here if you need accommodation"
         />
         {/*---Submit button---*/}
         <Button variant="contained" color="secondary" type="submit">
