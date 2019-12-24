@@ -15,6 +15,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
+import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 
 const images = [
   'http://www.icons101.com/icon_png/size_256/id_76704/Google_Settings.png',
@@ -182,18 +185,34 @@ export default function ButtonAppBar() {
       <Grid item xs={6}>
         <Paper className={classes.paper}>
           <Button component={ Link } to="/single" variant="contained" color="secondary">
-            Single
+            <FontAwesomeIcon icon={faUser} />&nbsp;Single
           </Button>
         </Paper>
       </Grid>
       <Grid item xs={6}>
         <Paper className={classes.paper}>
           <Button component={ Link } to="/team" variant="contained" color="secondary">
-            Team
+            <FontAwesomeIcon icon={faUsers} />&nbsp;Team
           </Button>
         </Paper>
       </Grid>
     </Grid>
+
+    {/*------- Bar for sponsers-------*/}
+    <Paper>
+      <Card>
+        <Typography variant="h5" color="textSecondary" align="center">
+          Our Sponsers
+        </Typography>
+        <Typography variant="h6" align="center">
+          <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
+          <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
+          <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
+          <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
+          <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+        </Typography>
+      </Card>
+    </Paper>
     {/*------------END----------------*/}
 
     <Paper>
