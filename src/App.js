@@ -140,104 +140,105 @@ export default function ButtonAppBar() {
   }, [index]);
 
   return (
-    <ThemeProvider>
-    <div className={classes.root}>
-      <AppBar position="sticky" color='secondary'>
-        <Toolbar>
-          <Typography variant="h5" className={classes.title} align='center'>
-            AAHVAAN
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-    <div className={classes.textcontainer} align="center">
-      <Typography variant="h1" className={classes.title} align='center' color="textPrimary">AAHVAAN
-      </Typography>
+    <div class="app">
+      <div className={classes.root}>
+        <AppBar position="sticky" color='secondary'>
+          <Toolbar>
+            <Typography variant="h5" className={classes.title} align='center'>
+              AAHVAAN
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
-    <div className={classes.overlay}>
-    </div>
-    <Paper>
-      <Gallery
-        style={{
-          background: "grey",
-          height: "90vh",
-          width: '100%',
-        }}
-        index={index}
-        onRequestChange={i => {
-          setIndex(i);
-        }}
-      >
-        {images.map(image => (
-          <GalleryImage objectFit="contain" key={image} src={image} class="image"/>
-        ))}
-      </Gallery>
-    </Paper>
-    <div className={classes.root}>
-      <AppBar position="sticky" color='secondary'>
-        <Toolbar>
-          <Typography variant="h5" className={classes.title} align='center'>
-            REGISTER
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
+      <div className={classes.textcontainer} align="center">
+        <h1 class="overlay-text">
+          AAHVAAN
+        </h1>
+      </div>
+      <div class="overlay-bg">
+      </div>
+      <Paper>
+        <Gallery
+          style={{
+            background: "grey",
+            height: "90vh",
+            width: '100%',
+          }}
+          index={index}
+          onRequestChange={i => {
+            setIndex(i);
+          }}
+        >
+          {images.map(image => (
+            <GalleryImage objectFit="contain" key={image} src={image} class="image"/>
+          ))}
+        </Gallery>
+      </Paper>
+      <div className={classes.root}>
+        <AppBar position="sticky" color='secondary'>
+          <Toolbar>
+            <Typography variant="h5" className={classes.title} align='center'>
+              REGISTER
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
 
-    {/*---------My Changes-------------*/}
-    <Grid container spacing={3}>
-      <Grid item xs={6}>
-        <Paper className={classes.paper}>
-          <Button component={ Link } to="/single" variant="contained" color="secondary">
-            <FontAwesomeIcon icon={faUser} />&nbsp;Single
-          </Button>
-        </Paper>
+      {/*---------My Changes-------------*/}
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <Button component={ Link } to="/single" variant="contained" color="secondary">
+              <FontAwesomeIcon icon={faUser} />&nbsp;Single
+            </Button>
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <Button component={ Link } to="/team" variant="contained" color="secondary">
+              <FontAwesomeIcon icon={faUsers} />&nbsp;Team
+            </Button>
+          </Paper>
+        </Grid>
       </Grid>
-      <Grid item xs={6}>
-        <Paper className={classes.paper}>
-          <Button component={ Link } to="/team" variant="contained" color="secondary">
-            <FontAwesomeIcon icon={faUsers} />&nbsp;Team
-          </Button>
-        </Paper>
-      </Grid>
-    </Grid>
+      {/*------- Bar for sponsers-------*/}
+      
+      <Paper>
+        <Card>
+          <Typography variant="h5" color="textSecondary" align="center">
+            Our Sponsers
+          </Typography>
+          <Typography variant="h6" align="center">
+            <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
+            <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
+            <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
+            <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
+            <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+          </Typography>
+        </Card>
+      </Paper>
+      {/*------------END----------------*/}
 
-    {/*------- Bar for sponsers-------*/}
-    <Paper>
-      <Card>
-        <Typography variant="h5" color="textSecondary" align="center">
-          Our Sponsers
-        </Typography>
-        <Typography variant="h6" align="center">
-          <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
-          <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
-        </Typography>
-      </Card>
-    </Paper>
-    {/*------------END----------------*/}
-
-    <Paper>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Delhi Technological University
-          </Typography>
-          <Typography variant="h5" component="h2" color="textSecondary">
-            AAHVAAN
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            @aahvaan
-          </Typography>
-          <Typography variant="body2" component="p" color="textSecondary">
-            THIS IS FOOTER
-            <br />
-            {'"sports spirit"'}
-          </Typography>
-        </CardContent>
+      <Paper>
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography className={classes.title} color="textSecondary" gutterBottom>
+              Delhi Technological University
+            </Typography>
+            <Typography variant="h5" component="h2" color="textSecondary">
+              AAHVAAN
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+              @aahvaan
+            </Typography>
+            <Typography variant="body2" component="p" color="textSecondary">
+              THIS IS FOOTER
+              <br />
+              {'"sports spirit"'}
+            </Typography>
+          </CardContent>
         </Card>  
       </Paper>
-    </ThemeProvider>    
+    </div>    
   );
 }
