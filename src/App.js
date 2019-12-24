@@ -19,6 +19,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 
+// import the custon CSS
+import './styles/index.css'
+
 const images = [
   'http://www.icons101.com/icon_png/size_256/id_76704/Google_Settings.png',
   'http://www.icons101.com/icon_png/size_256/id_80975/GoogleInbox.png',
