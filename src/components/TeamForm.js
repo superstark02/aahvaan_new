@@ -8,80 +8,44 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Confirm from './Confirm';
 
 const TeamForm = () => {
   const useStyles = makeStyles(theme => ({
     root: {
-      flexGrow: 1,
+      background: 'white',
+      color: 'black',
+
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-      zIndex: 1,
-      color: 'white',
-      opcaity:1,
-    },
-    card: {
-      minWidth: 275,
-    },
-    cardbullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    cardtitle: {
-      fontSize: 14,
-    },
-    cardpos: {
-      marginBottom: 12,
-    },
-    gridroot: {
-      flexGrow: 1,
-      overflow: 'hidden',
-      padding: theme.spacing(0, 3),
-    },
-    paper: {
-      maxWidth: 700,
-      margin: `${theme.spacing(1)}px auto`,
-      padding: theme.spacing(2),
-    },
-    registerpaper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-    eventroot: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 200,
-      },
+    form: {
+      spacing: 5
     },
     TextField: {
+      padding: 5,
+      margin: 5,
+      spacing: 5
+    },
+    InputLabel: {
+      padding: 5,
       margin: 10,
+      spacing: 5
     },
-    overlay: {
-      position:'absolute',
-      width: '100%',
-      height: '90vh',
-      backgroundColor:'black',
-      zIndex:1,
-      opacity:0.5,
+    Select: {
+      padding: 5,
+      margin: 10,
+      spacing: 5
     },
-    textcontainer: {
-      padding: '16px 32px',
-      position: 'absolute',
-      marginLeft:650,
-      marginTop:300,
-      color: 'white',
-      border: 'solid',
-      borderColor:'white',
-      opcaity:1,
-      borderWidth: 'thick ',
-      zIndex: 2,
-    }
+    Checkbox: {
+      padding: 10,
+      margin: 10,
+      spacing: 10
+    },
+    Button: {
+      marginLeft: theme.spacing(1),
+      marginTop: theme.spacing(0),
+      spacing: 5,
+    }  
   }));
 
   const classes = useStyles();
@@ -172,7 +136,7 @@ const TeamForm = () => {
     'Event5',
     'Event6'
   ];
-  
+    
   const [choosenEvent, setChoosenEvent] = React.useState()
     
   const handleChangeEvent = event => {
@@ -190,19 +154,24 @@ const TeamForm = () => {
   if (formView) {
     return(
       <form className={classes.root} autoComplete="off" onSubmit={handleSubmission}>
-        <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required
+          <h1 align="center">
+          <AppBar color="secondary">
+            TEAM REGISTRATION
+          </AppBar> 
+          </h1><br /><br />
+        <TextField className={classes.TextField} id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required
         value={nameInput} onChange={handleNameInputChange} />
-        <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required
+        <TextField className={classes.TextField} id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required
         value={emailInput} onChange={handleEmailInputChange} />
-        <TextField id="member-count" label="Members count (excluding leader)" variant="outlined" 
+        <TextField className={classes.TextField} id="member-count" label="Members count (excluding leader)" variant="outlined" 
         type="number" InputProps={{ inputProps: { min: 1} }} fullWidth={true} value={additionalTeamMembers}
         onChange={handleTeamNumberChange} required />
         {generateNameFields(additionalTeamMembers)}
         {/*Dropdopwn for events*/}
-        <InputLabel id="mutiple-event-label">Events*</InputLabel>
-        <Select
-        labelId="mutiple-event-label"
-        id="mutiple-events"
+        <InputLabel className={classes.InputLabel} id="event-label">Events*</InputLabel>
+        <Select className={classes.Select}
+        labelId="event-label"
+        id="events"
         value={choosenEvent}
         onChange={handleChangeEvent}
         input={<Input />}
@@ -216,14 +185,14 @@ const TeamForm = () => {
         ))}
         </Select>
         {/*-------------------*/}
-        <TextField id="college" label="College" variant="outlined" fullWidth={true} required 
+        <TextField className={classes.TextField} id="college" label="College" variant="outlined" fullWidth={true} required 
         value={collegeInput} onChange={handleCollegeInputChange} />
         <FormControlLabel id="stay-label"
-         control={<Checkbox id="stay-check" value="stayNeeded" fullWidth={true} checked={stayInput} onChange={handleStayInputChange} />}
+         control={<Checkbox className={classes.Checkbox} id="stay-check" value="stayNeeded" fullWidth={true} checked={stayInput} onChange={handleStayInputChange} />}
          label="Check here if you need accommodation"
         />
-        {/*---Submit button---*/}
-        <Button variant="contained" color="secondary" type="submit">
+        {/*---Submit button---*/}<br />
+        <Button className={classes.Button} variant="contained" color="secondary" type="submit">
         Submit
         </Button>
         {/*------------------*/}
