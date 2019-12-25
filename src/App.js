@@ -16,7 +16,7 @@ import Paper from '@material-ui/core/Paper';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 
 // import the custon CSS
@@ -140,7 +140,7 @@ export default function ButtonAppBar() {
   }, [index]);
 
   return (
-    <div class="app">
+    <div className="app">
       <div className={classes.root}>
         <AppBar position="sticky" color='secondary'>
           <Toolbar>
@@ -150,12 +150,12 @@ export default function ButtonAppBar() {
           </Toolbar>
         </AppBar>
       </div>
-      <div className={classes.textcontainer} align="center">
-        <h1 class="overlay-text">
+      <div className="overlay-text-container" align="center">
+        <h1 className="overlay-text">
           AAHVAAN
         </h1>
       </div>
-      <div class="overlay-bg">
+      <div className="overlay-bg">
       </div>
       <Paper>
         <Gallery
@@ -170,39 +170,43 @@ export default function ButtonAppBar() {
           }}
         >
           {images.map(image => (
-            <GalleryImage objectFit="contain" key={image} src={image} class="image"/>
+            <GalleryImage objectFit="contain" key={image} src={image} className="image"/>
           ))}
         </Gallery>
       </Paper>
+
+      {/*---------Form Components-------------*/}
       <div className={classes.root}>
         <AppBar position="sticky" color='secondary'>
           <Toolbar>
             <Typography variant="h5" className={classes.title} align='center'>
               REGISTER
+              <br />
+              <FontAwesomeIcon icon={faChevronCircleDown} />
             </Typography>
           </Toolbar>
         </AppBar>
       </div>
 
-      {/*---------My Changes-------------*/}
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} align="center">
             <Button component={ Link } to="/single" variant="contained" color="secondary">
               <FontAwesomeIcon icon={faUser} />&nbsp;Single
             </Button>
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} align="center">
             <Button component={ Link } to="/team" variant="contained" color="secondary">
               <FontAwesomeIcon icon={faUsers} />&nbsp;Team
             </Button>
           </Paper>
         </Grid>
       </Grid>
+      {/*-------------------------------------*/}
+
       {/*------- Bar for sponsers-------*/}
-      
       <Paper>
         <Card>
           <Typography variant="h5" color="textSecondary" align="center">
@@ -217,9 +221,9 @@ export default function ButtonAppBar() {
           </Typography>
         </Card>
       </Paper>
-      {/*------------END----------------*/}
+      {/*------------------------------------*/}
 
-      <Paper>
+      <Paper align="center">
         <Card className={classes.card}>
           <CardContent>
             <Typography className={classes.title} color="textSecondary" gutterBottom>

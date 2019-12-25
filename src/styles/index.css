@@ -5,11 +5,14 @@
   padding: 0px;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
 }
 
-.app {
-  width: 100vw;
+html{
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
 }
 
 .overlay-bg {
@@ -21,6 +24,33 @@
   opacity: 0.5;
 }
 
+.overlay-text-container{
+  position: absolute;
+  top:45%;
+  left:20%;
+  right:20%;
+  padding: 20px;
+  color: white;
+  border: solid;
+  border-color:white;
+  opacity: 1;
+  border-width: thick;
+  z-index: 2;
+}
+
 .overlay-text {
   font-size: 80px;
+  font-weight: 700;
+}
+
+/* Resize the overlay-text for small screens*/
+@media only screen and (max-width: 754px) {
+  .overlay-text-container {
+    left: 15%;
+    right: 15%;
+    padding: 5px;
+  }
+  .overlay-text {
+    font-size: 40px;
+  }
 }
