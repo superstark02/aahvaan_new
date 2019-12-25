@@ -123,7 +123,7 @@ const TeamForm = () => {
   const handleSubmission = (event) => {
     // Handle the form submission.
     event.preventDefault()
-    if (choosenEvents.length === 0) {
+    if (choosenEvent.length === 0) {
       alert('Please fill the events you want to participate in.')
       return
     }
@@ -133,7 +133,7 @@ const TeamForm = () => {
       email: document.getElementById('email').value,
       teamMemberCount: document.getElementById('member-count').value,
       teamMemberName: [],
-      events: choosenEvents,
+      events: choosenEvent,
       college: document.getElementById('college').value,
       stay: document.getElementById('stay-check').checked,
     }
@@ -154,6 +154,7 @@ const TeamForm = () => {
   // Event-handler for proceed button click
   const submitForm = () => {
     console.log('Clicked')
+    console.log(data)
     /*
     -
     - Write the code to push the userInput to database inside this function.
@@ -171,11 +172,11 @@ const TeamForm = () => {
     'Event5',
     'Event6'
   ];
+  
+  const [choosenEvent, setChoosenEvent] = React.useState()
     
-  const [choosenEvents, setChoosenEvents] = React.useState([])
-    
-  const handleChangeMultiple = event => {
-    setChoosenEvents(event.target.value)
+  const handleChangeEvent = event => {
+    setChoosenEvent(event.target.value)
   };
   
   // Function to generate the field for members.
@@ -188,7 +189,7 @@ const TeamForm = () => {
 
   if (formView) {
     return(
-      <form className={classes.root} Validate autoComplete="off" onSubmit={handleSubmission}>
+      <form className={classes.root} autoComplete="off" onSubmit={handleSubmission}>
         <TextField id="name-leader" label="Name (Leader)" variant="outlined" fullWidth={true} required
         value={nameInput} onChange={handleNameInputChange} />
         <TextField id="email" label="Email (Leader)" type="email" variant="outlined" fullWidth={true} required
@@ -202,9 +203,8 @@ const TeamForm = () => {
         <Select
         labelId="mutiple-event-label"
         id="mutiple-events"
-        multiple
-        value={choosenEvents}
-        onChange={handleChangeMultiple}
+        value={choosenEvent}
+        onChange={handleChangeEvent}
         input={<Input />}
         fullWidth={true}
         required

@@ -97,10 +97,10 @@ const SingleForm = () => {
     'Event6'
   ];
 
-  const [choosenEvents, setChoosenEvents] = React.useState([])
+  const [choosenEvent, setChoosenEvent] = React.useState()
 
-  const handleChangeMultiple = event => {
-    setChoosenEvents(event.target.value)
+  const handleChangeEvent = event => {
+    setChoosenEvent(event.target.value)
   };
 
   // States to handle input from text-field.
@@ -136,7 +136,7 @@ const SingleForm = () => {
   const handleSubmission = (event) => {
     // Handle the form submission.
     event.preventDefault()
-    if (choosenEvents.length === 0) {
+    if (choosenEvent.length === 0) {
       alert('Please fill the events you want to participate in.')
       return
     }
@@ -147,7 +147,7 @@ const SingleForm = () => {
       email: emailInput,
       teamMemberCount: 0,
       teamMemberName: null,
-      events: choosenEvents,
+      events: choosenEvent,
       college: collegeInput,
       stay: stayInput,
     }
@@ -164,6 +164,7 @@ const SingleForm = () => {
   // Event-handler for proceed button click
   const submitForm = () => {
     console.log('Clicked')
+    console.log(data)
     /*
     -
     - Write the code to push the userInput to database inside this function.
@@ -179,13 +180,12 @@ const SingleForm = () => {
         <TextField id="email" label="Email" type="email" variant="outlined" fullWidth={true} required
         value={emailInput} onChange={handleEmailInputChange} />
         {/*Dropdopwn for events*/}
-        <InputLabel id="mutiple-event-label">Events*</InputLabel>
+        <InputLabel id="event-label">Events*</InputLabel>
         <Select
-          labelId="mutiple-event-label"
-          id="mutiple-events"
-          multiple
-          value={choosenEvents}
-          onChange={handleChangeMultiple}
+          labelId="event-label"
+          id="events"
+          value={choosenEvent}
+          onChange={handleChangeEvent}
           input={<Input />}
           fullWidth={true}
           required
