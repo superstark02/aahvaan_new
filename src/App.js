@@ -12,8 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faChevronCircleDown, faArrowUp} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
+import Logo from './_img/logo.png'
 
 // import the custon CSS
 import './styles/index.css'
@@ -150,7 +151,26 @@ const useStyles = makeStyles(theme => ({
     opcaity:1,
     borderWidth: 'thick ',
     zIndex: 2,
-  }
+  },
+  footer: {
+    
+  },
+  upper: {
+    backgroundColor: 'gray',
+    color: 'white',
+    padding: '10px',
+    display: 'flex',
+    alignItems: 'stretch',
+  },
+  lower: {
+    display: 'flex',
+    color: 'white',
+    backgroundColor: 'black',
+    paddingBottom: '13px',
+  },
+  buttonUp: {
+    color: 'gold',
+  },
 }));
 
 export default function ButtonAppBar() {
@@ -291,7 +311,7 @@ export default function ButtonAppBar() {
             Our Sponsers
           </Typography>
           <Typography variant="h6" align="center">
-            <div class="sponsors">
+            <div className="sponsors">
               <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
               <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
               <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
@@ -303,26 +323,31 @@ export default function ButtonAppBar() {
       </Paper>
       {/*------------------------------------*/}
 
-      <Paper align="center">
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              Delhi Technological University
-            </Typography>
-            <Typography variant="h5" component="h2" color="textSecondary">
-              AAHVAAN
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              @aahvaan
-            </Typography>
-            <Typography variant="body2" component="p" color="textSecondary">
-              THIS IS FOOTER
+      {/*------------Footer------------------*/}
+      <Paper>
+        <Card className={classes.footer}>
+          <div className={classes.upper} align="right">
+            <Typography style={{width: '100px',}}>For help or any queries:</Typography>
+            <p style={{width: 'calc(100vw - 320px'}}></p>
+            <Typography style={{width: '220px',}}>
+              Contact-1: 8373-773747
               <br />
-              {'"sports spirit"'}
+              Contact-2: 8373-773747
             </Typography>
-          </CardContent>
+          </div>
+          
+          <div className={classes.lower}>
+            <img src={Logo} width="50px" height="60px" alt="Aahvaan Logo" />
+            <p style={{width: 'calc(100vw - 100px)', textAlign: 'center', paddingTop: '10px'}}> 
+              @Copyright 2020 AAHVAAN DTU
+            </p>
+            <Button href="" className={classes.buttonUp} style={{width: '50px', fontSize: '20px'}}>
+              <FontAwesomeIcon icon={faArrowUp} />
+            </Button>
+          </div>
         </Card>  
       </Paper>
+      {/*------------------------------------*/}
     </div>    
   );
 }
