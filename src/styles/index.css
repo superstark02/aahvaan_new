@@ -43,6 +43,11 @@ html{
   font-weight: 700;
 }
 
+.sponsors > svg {
+  font-size: 2rem;
+  margin: 10px 6vw 10px 6vw;
+}
+
 /* Resize the overlay-text for small screens*/
 @media only screen and (max-width: 754px) {
   .overlay-text-container {
@@ -52,5 +57,12 @@ html{
   }
   .overlay-text {
     font-size: 40px;
+  }
+}
+
+/* Resize sponsors for small screens*/
+@media only screen and (max-width: 481px) {
+  .sponsors > svg {
+    font-size: 1.4rem;
   }
 }
