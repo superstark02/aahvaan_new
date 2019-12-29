@@ -2,7 +2,7 @@ import React from 'react'
 
 const generateMembersList = (members) => {
   return(
-    members.map((member, index) => <p>Member {index + 1}: {member}</p>)
+    members.map((member, index) => <p key={index}>Member {index + 1}: {member}</p>)
   )
 }
 

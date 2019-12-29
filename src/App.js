@@ -7,10 +7,10 @@ import Button from '@material-ui/core/Button';
 import {Gallery, GalleryImage } from 'react-gesture-gallery';
 import { createMuiTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers, faChevronCircleDown, faArrowUp} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
@@ -88,6 +88,9 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  content: {
+    padding: '2px 5vw 2px 5vw',
+  },
   title: {
     flexGrow: 1,
     zIndex: 1,
@@ -134,7 +137,7 @@ const useStyles = makeStyles(theme => ({
   },
   overlay: {
     position:'absolute',
-    width: '99.09%',
+    width: '100%',
     height: '90vh',
     backgroundColor:'black',
     zIndex:1,
@@ -197,14 +200,14 @@ export default function ButtonAppBar() {
     <div className="app">
 
       {/*---------Navbar----------------*/}
-      <div>
+      <div id="top">
         <AppBar className={classes.navBar} position="sticky" color="secondary">
         </AppBar>
       </div>
       <div id="navbar-content">
         <Typography className={classes.root}>
-          <Button className={classes.navButtonAbout} href="">About</Button>
-          <Button className={classes.navButtonContact} href="">Contact Us</Button>
+          <HashLink smooth to="/#about"><Button className={classes.navButtonAbout} href="">About</Button></HashLink>
+          <HashLink smooth to="/#contact"><Button className={classes.navButtonContact} href="">Contact Us</Button></HashLink>
         </Typography>
       </div>
       {/*-------------------------------*/}
@@ -247,7 +250,7 @@ export default function ButtonAppBar() {
                 </Typography>
               </Toolbar>
             </AppBar>
-            <div>
+            <div className={classes.content}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at convallis dui, hendrerit 
               pharetra justo. Duis maximus, dui vitae suscipit lobortis, ipsum diam ultrices quam, vel suscipit 
               ipsum nibh in orci. Curabitur vitae augue eleifend tortor varius varius. Etiam non elementum leo. 
@@ -280,7 +283,7 @@ export default function ButtonAppBar() {
         </AppBar>
       </div>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className={classes.content}>
         <Grid item xs={6}>
           <Paper className={classes.paper} align="center">
             <div className={classes.avatar}>
@@ -326,7 +329,7 @@ export default function ButtonAppBar() {
       {/*------------Footer------------------*/}
       <Paper>
         <Card className={classes.footer}>
-          <div className={classes.upper} align="right">
+          <div id="contact" className={classes.upper} align="right">
             <Typography style={{width: '100px',}}>For help or any queries:</Typography>
             <p style={{width: 'calc(100vw - 320px'}}></p>
             <Typography style={{width: '220px',}}>
@@ -339,11 +342,13 @@ export default function ButtonAppBar() {
           <div className={classes.lower}>
             <img src={Logo} width="50px" height="60px" alt="Aahvaan Logo" />
             <p style={{width: 'calc(100vw - 100px)', textAlign: 'center', paddingTop: '10px'}}> 
-              @Copyright 2020 AAHVAAN DTU
+              Copyright 2020 @AAHVAAN DTU
             </p>
-            <Button href="" className={classes.buttonUp} style={{width: '50px', fontSize: '20px'}}>
-              <FontAwesomeIcon icon={faArrowUp} />
-            </Button>
+            <HashLink smooth to="/#top">
+              <Button href="" className={classes.buttonUp} style={{width: '50px', fontSize: '20px'}}>
+                <FontAwesomeIcon icon={faArrowUp} />
+              </Button>
+            </HashLink>
           </div>
         </Card>  
       </Paper>
