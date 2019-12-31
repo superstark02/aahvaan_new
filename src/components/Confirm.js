@@ -1,8 +1,14 @@
 import React from 'react'
+import '../styles/confirm.css'
 
 const generateMembersList = (members) => {
   return(
-    members.map((member, index) => <p key={index}>Member {index + 1}: {member}</p>)
+    members.map((member, index) => {
+      return(
+          <tr key={index}><td>Member {index + 1}:</td><td>{member}</td></tr>
+        )
+      }
+    )
   )
 }
 
@@ -10,29 +16,78 @@ const Confirm = ({ data }) => {
   if (data.single) {
     // For single registrations.
     return (
-      <React.Fragment>
-        <p>Registration type: Single</p>
-        <p>Name: {data.name}</p>
-        <p>Email-id: {data.email}</p>
-        <p>Event: {data.events}</p>
-        <p>College: {data.college}</p>
-        <p>Accommodation wanted: {data.stay ? 'Yes' : 'No'}</p>
-      </React.Fragment>
+      <table border="1px" cellSpacing="0" className="confirm">
+        <thead>
+          <tr>
+            <th>Registration type:</th>
+            <th>Single</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td>{data.name}</td>
+          </tr>
+          <tr>
+            <td>Email-id:</td>
+            <td>{data.email}</td>
+          </tr>
+          <tr>
+            <td>Event:</td>
+            <td>{data.events}</td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td>{data.college}</td>
+          </tr>
+          <tr>
+            <td>Accommodation wanted:</td>
+            <td>{data.stay ? 'Yes' : 'No'}</td>
+          </tr>
+        </tbody>
+      </table>
     )
   } else {
     // For team registrations.
     return (
-      <React.Fragment>
-        <p>Registration type: Team</p>
-        <p>Name (Leader): {data.name}</p>
-        <p>Email-id (Leader): {data.email}</p>
-        <p>Event: {data.events}</p>
-        <p>Members Count: {data.teamMemberCount}</p>
-        <p>Members Name:</p>
-        {generateMembersList(data.teamMemberName)}
-        <p>College: {data.college}</p>
-        <p>Accommodation wanted: {data.stay ? 'Yes' : 'No'}</p>
-      </React.Fragment>
+      <table border="1px" cellSpacing="0" className="confirm">
+        <thead>
+          <tr>
+            <th>Registration type:</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name (Leader):</td>
+            <td>{data.name}</td>
+          </tr>
+          <tr>
+            <td>Email-id (Leader):</td>
+            <td>{data.email}</td>
+          </tr>
+          <tr>
+            <td>Event:</td>
+            <td>{data.events}</td>
+          </tr>
+          <tr>
+            <td>Members Count:</td>
+            <td>{data.teamMemberCount}</td>
+          </tr>
+          <tr colSpan="2">
+            <td>Members Name:</td>
+          </tr>
+          {generateMembersList(data.teamMemberName)}
+          <tr>
+            <td>College:</td>
+            <td>{data.college}</td>
+          </tr>
+          <tr>
+            <td>Accommodation wanted:</td>
+            <td>{data.stay ? 'Yes' : 'No'}</td>
+          </tr>
+        </tbody>
+      </table>
     )
   }
 }
