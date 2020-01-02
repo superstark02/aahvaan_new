@@ -326,6 +326,25 @@ export default function ButtonAppBar() {
       </Paper>
       {/*------------------------------------*/}
 
+      {/*------- Bar for sponsers-------*/}
+      <Paper>
+        <Card>
+          <Typography variant="h5" color="textSecondary" align="center">
+            Past Sponsers
+          </Typography>
+          <Typography variant="h6" align="center">
+            <div className="sponsors">
+              <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+            </div>
+          </Typography>
+        </Card>
+      </Paper>
+      {/*------------------------------------*/}
+
       {/*------------Footer------------------*/}
       <Paper>
         <Card className={classes.footer}>

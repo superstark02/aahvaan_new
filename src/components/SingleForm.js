@@ -68,10 +68,13 @@ const SingleForm = () => {
       borderRadius: '5px',
       boxShadow: '2px 2px 10px 0px gray',
       position: 'relative',
-      top: '15px',
-      width: '92vw',
-      marginLeft: '4vw',
+      top: '40px',
+      left: '0px',
+      width: 'calc(100vw - 8px)',
       padding: '8px',
+      margin: '5px',
+      display: 'flex',
+      justifyContent: 'space-around',
     },
   }));
 
@@ -169,7 +172,7 @@ const SingleForm = () => {
         <h1 align="center">
           <AppBar color="secondary">
             SINGLE REGISTRATION
-          </AppBar> 
+          </AppBar>
         </h1>
         <br />
         <br />
@@ -232,20 +235,16 @@ const SingleForm = () => {
         <br />
         <br />
         <Confirm data={data} />
+
         <div className={classes.buttonDiv}>
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Button style={{width: 'calc(23vw - 4px)',}} variant="contained" color="primary" onClick={handleEdit}>
-                Edit
-              </Button>
-            </Grid>
-            <Grid item xs={9}>
-              <Button style={{width: 'calc(68vw - 10px)',}} variant="contained" color="secondary" onClick={submitForm}>
-                Proceed
-              </Button>
-            </Grid>
-          </Grid>
+          <Button style={{width: '20vw',}} variant="contained" color="primary" onClick={handleEdit}>
+            Edit
+          </Button>
+          <Button style={{width: '60vw',}} variant="contained" color="secondary" onClick={submitForm}>
+            Proceed
+          </Button>
         </div>
+
       </React.Fragment>
     )
 

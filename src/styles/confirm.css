@@ -9,16 +9,10 @@
 
 .confirm td, .confirm th {
   padding: 10px;
-  overflow-x: scroll;
-}
-
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 @media only screen and (max-width: 500px) {
-    .confirm{
+    .confirm {
         width: 99vw;
         margin-left: 0px;
         font-size: 15px;
