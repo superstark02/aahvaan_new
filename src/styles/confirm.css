@@ -4,7 +4,7 @@
   margin-top: 10px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 2px 2px 20px 0px gray;
+  border: 1px solid gray;
 }
 
 .confirm td, .confirm th {

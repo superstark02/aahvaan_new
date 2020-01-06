@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import Checkbox from '@material-ui/core/Checkbox'
 import Select from '@material-ui/core/Select'
-import Grid from '@material-ui/core/Grid'
+import { Link } from 'react-router-dom'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
@@ -27,19 +27,22 @@ const TeamForm = () => {
       paddingBottom: '14px',
       margin: '0px',
       marginLeft: '2vw',
+      width: '600px',
     },
     TextField: {
       padding: 0,
       margin: 8,
       spacing: 5,
       width: '92vw',
-      marginLeft: '2vw'
+      marginLeft: '2vw',
+      maxWidth: 'calc(580px - 2vw)',
     },
     InputLabel: {
       padding: 5,
       margin: 10,
       marginLeft: '2vw',
-      spacing: 5
+      spacing: 5,
+      maxWidth: 'calc(580px - 2vw)',
     },
     Select: {
       padding: 5,
@@ -47,6 +50,7 @@ const TeamForm = () => {
       marginLeft: '2vw',
       spacing: 5,
       width: '92vw',
+      maxWidth: 'calc(580px - 2vw)',
     },
     Checkbox: {
       padding: 10,
@@ -56,6 +60,8 @@ const TeamForm = () => {
     },
     Button: {
       marginLeft: '2vw',
+      backgroundColor: 'black',
+      color: 'white',
       marginTop: theme.spacing(0),
       spacing: 5,
     },
@@ -65,7 +71,6 @@ const TeamForm = () => {
     },
     buttonDiv: {
       borderRadius: '5px',
-      boxShadow: '2px 2px 10px 0px gray',
       position: 'relative',
       top: '40px',
       left: '0px',
@@ -183,10 +188,10 @@ const TeamForm = () => {
   if (formView) {
     return(
       <React.Fragment>
-        <h1 align="center">
-          <AppBar color="secondary">
-            TEAM REGISTRATION
-          </AppBar> 
+        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
+          <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
+            Home
+          </Button>
         </h1>
         <br />
         <br />
@@ -228,11 +233,11 @@ const TeamForm = () => {
             <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
             value={collegeInput} onChange={handleCollegeInputChange} />
             <FormControlLabel id="stay-label"
-            control={<Checkbox className={classes.Checkbox} id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
+            control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
             label="Check here if you need accommodation"
             />
             {/*---Submit button---*/}<br />
-            <Button className={classes.Button} variant="contained" color="secondary" type="submit">
+            <Button className={classes.Button} variant="contained" type="submit">
             Submit
             </Button>
             {/*------------------*/}
@@ -245,10 +250,8 @@ const TeamForm = () => {
 
     return(
       <React.Fragment>
-        <h1 align="center">
-        <AppBar color="secondary">
+        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
           CONFIRM DETAILS
-        </AppBar> 
         </h1>
         <br />
         <br />
@@ -256,10 +259,10 @@ const TeamForm = () => {
         <Confirm data={data} />
 
         <div className={classes.buttonDiv}>
-          <Button style={{width: '20vw',}} variant="contained" color="primary" onClick={handleEdit}>
+          <Button style={{width: '20vw', color: 'white', backgroundColor: 'black',}} variant="contained" color="primary" onClick={handleEdit}>
             Edit
           </Button>
-          <Button style={{width: '60vw',}} variant="contained" color="secondary" onClick={submitForm}>
+          <Button style={{width: '60vw', color: 'white', backgroundColor: 'orangered',}} variant="contained" color="secondary" onClick={submitForm}>
             Proceed
           </Button>
         </div>

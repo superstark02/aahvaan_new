@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
+import { Link } from 'react-router-dom';
 import Confirm from './Confirm'
 
 const SingleForm = () => {
@@ -27,12 +28,14 @@ const SingleForm = () => {
       paddingBottom: '14px',
       margin: '0px',
       marginLeft: '2vw',
+      maxWidth: '600px',
     },
     TextField: {
       padding: 0,
       margin: 8,
       spacing: 5,
       width: '92vw',
+      maxWidth: 'calc(580px - 2vw)',
       marginLeft: '2vw'
     },
     InputLabel: {
@@ -40,6 +43,7 @@ const SingleForm = () => {
       margin: 10,
       marginLeft: '2vw',
       width: '92vw',
+      maxWidth: 'calc(580px - 2vw)',
       spacing: 5
     },
     Select: {
@@ -48,15 +52,18 @@ const SingleForm = () => {
       marginLeft: '2vw',
       spacing: 5,
       width: '92vw',
+      maxWidth: 'calc(580px - 2vw)',
     },
     Checkbox: {
       padding: 10,
       margin: 10,
       spacing: 10,
-      marginLeft: '2vw'
+      marginLeft: '2vw',
     },
     Button: {
       marginLeft: '2vw',
+      backgroundColor: 'black',
+      color: 'white',
       marginTop: theme.spacing(0),
       spacing: 5,
     },
@@ -66,7 +73,6 @@ const SingleForm = () => {
     },
     buttonDiv: {
       borderRadius: '5px',
-      boxShadow: '2px 2px 10px 0px gray',
       position: 'relative',
       top: '40px',
       left: '0px',
@@ -169,10 +175,10 @@ const SingleForm = () => {
   if (formView) {
     return (
       <React.Fragment>
-        <h1 align="center">
-          <AppBar color="secondary">
-            SINGLE REGISTRATION
-          </AppBar>
+        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
+          <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
+            Home
+          </Button>
         </h1>
         <br />
         <br />
@@ -208,12 +214,12 @@ const SingleForm = () => {
             <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
             value={collegeInput} onChange={handleCollegeInputChange} />
             <FormControlLabel id="stay-label"
-            control={<Checkbox className={classes.Checkbox} id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
+            control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
             label="Check here if you need accommodation"
             />
             {/*---Submit button---*/}
             <br />
-            <Button className={classes.Button} variant="contained" color="secondary" type="submit">
+            <Button className={classes.Button} variant="contained" type="submit">
               Submit
             </Button>
             {/*------------------*/}
@@ -226,10 +232,8 @@ const SingleForm = () => {
 
     return(
       <React.Fragment>
-        <h1 align="center">
-          <AppBar color="secondary">
-            CONFIRM DETAILS
-          </AppBar> 
+        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
+          CONFIRM DETAILS
         </h1>
         <br />
         <br />
@@ -237,14 +241,13 @@ const SingleForm = () => {
         <Confirm data={data} />
 
         <div className={classes.buttonDiv}>
-          <Button style={{width: '20vw',}} variant="contained" color="primary" onClick={handleEdit}>
+          <Button style={{width: '20vw', color: 'white', backgroundColor: 'black',}} variant="contained" onClick={handleEdit}>
             Edit
           </Button>
-          <Button style={{width: '60vw',}} variant="contained" color="secondary" onClick={submitForm}>
+          <Button style={{width: '60vw', color: 'white', backgroundColor: 'orangered',}} variant="contained" color="secondary" onClick={submitForm}>
             Proceed
           </Button>
         </div>
-
       </React.Fragment>
     )
 

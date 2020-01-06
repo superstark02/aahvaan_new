@@ -19,8 +19,8 @@ const Confirm = ({ data }) => {
       <table border="1px" cellSpacing="0" className="confirm">
         <thead>
           <tr>
-            <th>Registration type:</th>
-            <th>Single</th>
+            <td>Registration type:</td>
+            <td>Single</td>
           </tr>
         </thead>
         <tbody>
