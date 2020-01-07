@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select'
 import { Link } from 'react-router-dom'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Confirm from './Confirm'
 import TokenDisplay from './TokenDisplay'
@@ -189,16 +190,17 @@ const TeamForm = () => {
   if (formView == 1) {
     return(
       <React.Fragment>
-        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
-          <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
-            Home
-          </Button>
-        </h1>
+        <div className={classes.navBar}>
+          <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
+            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
+              Home
+            </Button>
+          </h1>
+        </div>
         <br />
         <br />
         <br />
-        <br />
-        <div className={classes.formCard}>
+        <Paper elevation={3} className={classes.formCard}>
           <form autoComplete="off" onSubmit={handleSubmission}>
             <TextField className={classes.TextField} id="name-leader" label="Name (Leader)" variant="outlined" required
             value={nameInput} onChange={handleNameInputChange} />
@@ -209,7 +211,6 @@ const TeamForm = () => {
             onChange={handleTeamNumberChange} required />
             {generateNameFields(additionalTeamMembers)}
 
-            {/*Dropdopwn for events*/}
             {/*Dropdopwn for events*/}
             <FormControl required className={classes.formControl}>
               <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
@@ -243,7 +244,7 @@ const TeamForm = () => {
             </Button>
             {/*------------------*/}
           </form>
-        </div>
+        </Paper>
       </React.Fragment>
     )
 

@@ -9,12 +9,23 @@ import Select from '@material-ui/core/Select'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 import { Link } from 'react-router-dom'
 import TokenDisplay from './TokenDisplay'
 import Confirm from './Confirm'
 
 const SingleForm = () => {
   const useStyles = makeStyles(theme => ({
+    root: {
+      display: 'flex',
+      height:'80vh',
+      marginLeft:'auto',
+      marginRight:'auto',
+    },
+    navBar: {
+      margin:'0',
+      backgroundColor:'black',
+    },
     form: {
       spacing: 5,
     },
@@ -175,21 +186,23 @@ const SingleForm = () => {
   if (formView == 1) {
     return (
       <React.Fragment>
-        <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
-          <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
-            Home
-          </Button>
-        </h1>
+        <div className={classes.navBar}>
+          <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
+            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
+              Home
+            </Button>
+          </h1>
+        </div>
         <br />
         <br />
         <br />
-        <div className={classes.formCard}>
+        <Paper elevation={3} className={classes.formCard}>
           <form autoComplete="off" onSubmit={handleSubmission} >
             <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
             value={nameInput} onChange={handleNameInputChange} />
             <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
             value={emailInput} onChange={handleEmailInputChange} />
-            
+
             {/*Dropdopwn for events*/}
             <FormControl required className={classes.formControl}>
               <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
@@ -209,7 +222,7 @@ const SingleForm = () => {
               ))}
               </Select>
             </FormControl>
-            
+
             {/*-------------------*/}
             <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
             value={collegeInput} onChange={handleCollegeInputChange} />
@@ -224,7 +237,7 @@ const SingleForm = () => {
             </Button>
             {/*------------------*/}
           </form>
-        </div>
+        </Paper>
       </React.Fragment>
     )
 
@@ -251,7 +264,7 @@ const SingleForm = () => {
       </React.Fragment>
     )
 
-  } else {
+  } else if (formView == 3) {
 
     return(
       <TokenDisplay />
