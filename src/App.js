@@ -174,9 +174,10 @@ const useStyles = makeStyles(theme => ({
   upper: {
     backgroundColor: 'lightgray',
     color: 'black',
-    padding: '10px',
+    padding: '2%',
     display: 'flex',
     alignItems: 'stretch',
+    height: '20vh',
   },
   lower: {
     textAlign: 'center',
@@ -278,7 +279,7 @@ export default function ButtonAppBar() {
 
       <Grid container spacing={3} className={classes.content}>
         <Grid item xs={6}>
-          <Paper className={classes.paper} align="center">
+          <Paper className={classes.paper} align="center" >
             <div className={classes.avatar}>
               <FontAwesomeIcon icon={faUser} />
             </div>
