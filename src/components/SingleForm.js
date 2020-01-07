@@ -15,12 +15,21 @@ import Confirm from './Confirm'
 
 const SingleForm = () => {
   const useStyles = makeStyles(theme => ({
+    root: {
+      display: 'flex',
+      height:'80vh',
+      marginLeft:'auto',
+      marginRight:'auto',
+    },
+    navBar: {
+      margin:'0',
+      backgroundColor:'black',
+    },
     form: {
       spacing: 5,
     },
     formCard: {
       width: '96vw',
-      boxShadow: '2px 2px 10px 0px gray',
       borderRadius: '20px',
       padding: '0px',
       paddingTop: '14px',
@@ -175,55 +184,59 @@ const SingleForm = () => {
   if (formView == 1) {
     return (
       <React.Fragment>
+      <div className={classes.navBar}>
         <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
           <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
             Home
           </Button>
         </h1>
+      </div>
         <br />
         <br />
         <br />
-        <div className={classes.formCard}>
-          <form autoComplete="off" onSubmit={handleSubmission} >
-            <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
-            value={nameInput} onChange={handleNameInputChange} />
-            <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
-            value={emailInput} onChange={handleEmailInputChange} />
-            
-            {/*Dropdopwn for events*/}
-            <FormControl required className={classes.formControl}>
-              <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
-              <Select
-              className={classes.Select}
-              labelId="event-label"
-              id="events"
-              value={choosenEvent}
-              onChange={handleChangeEvent}
-              input={<Input />}
-              >
-              <MenuItem value="" disabled>Events</MenuItem>
-              {sportsEvents.map(event=> (
-                <MenuItem key={event} value={event}>
-                {event}
-                </MenuItem>
-              ))}
-              </Select>
-            </FormControl>
-            
-            {/*-------------------*/}
-            <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
-            value={collegeInput} onChange={handleCollegeInputChange} />
-            <FormControlLabel id="stay-label"
-            control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
-            label="Check here if you need accommodation"
-            />
-            {/*---Submit button---*/}
-            <br />
-            <Button className={classes.Button} variant="contained" type="submit">
-              Submit
-            </Button>
-            {/*------------------*/}
-          </form>
+        <div className={classes.root}>
+          <Paper elevation='3' className={classes.formCard}>
+            <form autoComplete="off" onSubmit={handleSubmission} >
+              <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
+              value={nameInput} onChange={handleNameInputChange} />
+              <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
+              value={emailInput} onChange={handleEmailInputChange} />
+
+              {/*Dropdopwn for events*/}
+              <FormControl required className={classes.formControl}>
+                <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
+                <Select
+                className={classes.Select}
+                labelId="event-label"
+                id="events"
+                value={choosenEvent}
+                onChange={handleChangeEvent}
+                input={<Input />}
+                >
+                <MenuItem value="" disabled>Events</MenuItem>
+                {sportsEvents.map(event=> (
+                  <MenuItem key={event} value={event}>
+                  {event}
+                  </MenuItem>
+                ))}
+                </Select>
+              </FormControl>
+
+              {/*-------------------*/}
+              <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
+              value={collegeInput} onChange={handleCollegeInputChange} />
+              <FormControlLabel id="stay-label"
+              control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
+              label="Check here if you need accommodation"
+              />
+              {/*---Submit button---*/}
+              <br />
+              <Button className={classes.Button} variant="contained" type="submit">
+                Submit
+              </Button>
+              {/*------------------*/}
+            </form>
+          </Paper>
         </div>
       </React.Fragment>
     )
