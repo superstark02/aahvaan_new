@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
 import Confirm from './Confirm'
+import TokenDisplay from './TokenDisplay'
 
 const TeamForm = () => {
   const useStyles = makeStyles(theme => ({
@@ -113,7 +113,7 @@ const TeamForm = () => {
   }
 
   // State to toggle between form-view & confirmation-view
-  const [formView, setFormView] = useState(true)
+  const [formView, setFormView] = useState(1)
 
   // State to hold the user input
   const [data, setData] = useState({})
@@ -141,12 +141,12 @@ const TeamForm = () => {
     }
 
     setData(inputData)
-    setFormView(false)
+    setFormView(2)
   }
 
   // Event-handler for edit button click
   const handleEdit = () => {
-    setFormView(true)
+    setFormView(1)
   }
 
   // Event-handler for proceed button click
@@ -158,6 +158,7 @@ const TeamForm = () => {
     - Write the code to push the userInput to database inside this function.
     -
     */
+   setFormView(3)
   }
 
   // Logic for the drop-down menu.
@@ -185,7 +186,7 @@ const TeamForm = () => {
     return inputFields
   }
 
-  if (formView) {
+  if (formView == 1) {
     return(
       <React.Fragment>
         <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
@@ -246,7 +247,7 @@ const TeamForm = () => {
       </React.Fragment>
     )
 
-  } else {
+  } else if (formView == 2) {
 
     return(
       <React.Fragment>
@@ -269,6 +270,13 @@ const TeamForm = () => {
         
       </React.Fragment>
     )
+
+  } else if (formView == 3) {
+
+    return (
+      <TokenDisplay />
+    )
+
   }
 }
 

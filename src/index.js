@@ -4,6 +4,7 @@ import App from './App';
 import TeamForm from './components/TeamForm'
 import SingleForm from './components/SingleForm'
 import Confirm from './components/Confirm'
+import TokenDisplay from './components/TokenDisplay'
 import {Route, HashRouter as Router} from 'react-router-dom'
 
 const routing = (
@@ -13,6 +14,7 @@ const routing = (
         <Route path="/single" component={SingleForm} />
         <Route path="/team" component={TeamForm} />
         <Route path="/confirm" component={Confirm} />
+        <Route path="/success" component={TokenDisplay} />
       </div>
     </Router>
 )

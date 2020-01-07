@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faChevronCircleDown, faArrowUp} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 import Logo from './_img/logo.png'
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     backgroundColor: 'gray',
     border: '4px solid black',
-    padding: '12px',
+    padding: '2px',
     width: '50px',
     height: '50px',
     borderRadius: '50%',
@@ -96,6 +96,9 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     padding: '35px 8vw 35px 8vw',
+    fontSize: '20px',
+    lineHeight: '40px',
+    width: '100%',
   },
   register: {
     padding: '20px 0px 20px 0px',
@@ -256,23 +259,10 @@ export default function ButtonAppBar() {
         </Typography>
         <div className={classes.content}>
           <img style={{float: "right", margin: "0px 0px 0px 25px",}} src="https://images.unsplash.com/photo-1504305754058-2f08ccd89a0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" width="350px" height="200px" />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at convallis dui, hendrerit 
-            pharetra justo. Duis maximus, dui vitae suscipit lobortis, ipsum diam ultrices quam, vel suscipit 
-            ipsum nibh in orci. Curabitur vitae augue eleifend tortor varius varius. Etiam non elementum leo. 
-            Phasellus id metus non est mattis ultrices. Praesent vel metus eget velit mollis dictum ac sed nunc. 
-            Phasellus mattis, orci sed dictum malesuada, nulla nulla fringilla mauris, at convallis lacus 
-            metus vel risus. In sagittis porttitor pharetra.
-          </p>
-          <p>
-            Morbi ut pulvinar metus. Suspendisse quis risus vel ligula dictum volutpat et at dui. Nulla 
-            vestibulum dapibus turpis eget feugiat. Suspendisse erat nibh, blandit eget sodales a, 
-            fermentum a velit. Nulla consequat iaculis enim eget tincidunt. Pellentesque sapien ipsum, 
-            ultricies sodales est non, sollicitudin malesuada erat. Nunc vulputate tempus venenatis. 
-            Phasellus tincidunt dignissim enim vitae pretium. Ut tristique, massa a tristique viverra, 
-            purus nulla pretium metus, et mattis nisl magna ac lorem. Donec et gravida dolor. Phasellus 
-            facilisis risus nec magna vestibulum, et auctor orci maximus.
-          </p>
+          Aahvaan is a platform for you to go beyond conventional fest advertising. The team
+          wants to give you value for your money and has built an extensive network to ensure
+          just that. With us, you wil be able to advertise outside campus and tap audiences of
+          various age groups. With us, you are not restricted to college students.
         </div>
       </div>
       {/*-------------------------------------*/}

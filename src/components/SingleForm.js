@@ -6,12 +6,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import Checkbox from '@material-ui/core/Checkbox'
 import Select from '@material-ui/core/Select'
-import Grid from '@material-ui/core/Grid'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import TokenDisplay from './TokenDisplay'
 import Confirm from './Confirm'
 
 const SingleForm = () => {
@@ -127,7 +126,7 @@ const SingleForm = () => {
   }
 
   // State to toggle between form view & confirmation view.
-  const [formView, setFormView] = useState(true)
+  const [formView, setFormView] = useState(1)
 
   // State to hold the user entered data.
   const [data, setData] = useState({})
@@ -153,12 +152,12 @@ const SingleForm = () => {
     }
     setData(inputData)
 
-    setFormView(false)
+    setFormView(2)
   }
 
   // Event-handler for edit button click
   const handleEdit = () => {
-    setFormView(true)
+    setFormView(1)
   }
 
   // Event-handler for proceed button click
@@ -170,9 +169,10 @@ const SingleForm = () => {
     - Write the code to push the userInput to database inside this function.
     -
     */
+   setFormView(3)
   }
 
-  if (formView) {
+  if (formView == 1) {
     return (
       <React.Fragment>
         <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
@@ -228,7 +228,7 @@ const SingleForm = () => {
       </React.Fragment>
     )
 
-  } else {
+  } else if (formView == 2) {
 
     return(
       <React.Fragment>
@@ -249,6 +249,12 @@ const SingleForm = () => {
           </Button>
         </div>
       </React.Fragment>
+    )
+
+  } else {
+
+    return(
+      <TokenDisplay />
     )
 
   }

@@ -7,11 +7,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-#root {
-  width: 100%;
-  /* overflow-x: hidden; */
-}
-
 .overlay-bg {
   position: absolute;
   width: 100%;
