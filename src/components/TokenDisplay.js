@@ -1,58 +1,65 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import {CopyToClipboard} from 'react-copy-to-clipboard'
-import {Link} from 'react-router-dom'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCopy} from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
-const TokenDisplay = () => {
-  const useStyles = makeStyles(() => ({
-    content: {
-      display: 'flex',
-      alignContent: 'space-around',
-      width: '80vw',
-      marginLeft: '10vw',
-      fontSize: '30px',
-      lineHeight: '50px',
-      textAlign: 'center',
-      border: '2px solid gray',
-    },
-    // oneLiner: {
-    //   display: 'flex',
+const useStyles = makeStyles(theme => ({
+  root:{
+    margin:0,
+    padding:0,
+  },
+  paper:{
+    height:'auto',
+    width:'auto',
+    marginTop:10,
+    padding:'2vh',
+  },
+  token:{
+    border:'dashed',
+    borderWidth:'0.2vh',
+    borderColor:'black',
+    backgroundColor:'#c5eff7',
+    borderRadius:2,
+    align:'center',
+    padding:8,
+  },
+  congratulations:{
+    margin:0,
+    marginTop:10,
+  },
+  navBar:{
+    width:'100%',
+    height:'10vh',
+    backgroundColor:'black',
+    margin:0,
+    color:'white',
+    paddingTop:15,
+    fontSize:'2vw'
+  }
+}));
 
-    // },
-    tokenBox: {
-      width: '40vw',
-      border: '3px solid black',
-      borderRadius: '5px',
-    },
-  }))
-
+export default function SimplePaper() {
   const classes = useStyles();
 
-  const tokenNumber = 'HDJSHWU2383'
   return (
-    <React.Fragment>
-      <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
-        <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
-          Home
-        </Button>
-      </h1>
-      <br />
-      <br />
-      <br />
-      <div className={classes.content}>
-        <p>Token Number:</p>
-        <p className={classes.tokenBox}>{tokenNumber}</p>
-        <CopyToClipboard text={tokenNumber}>
-          <Button variant="outlined" color="primary" style={{fontSize: '30px', padding: '10px', width: '10vw',}}>
-            <FontAwesomeIcon icon={faCopy} />
-          </Button>
-        </CopyToClipboard>
+    <div className={classes.root}>
+      <div className={classes.navBar} align='center'>
+        HOME
       </div>
-    </React.Fragment>
-  )
+      <CssBaseline />
+      <Container maxWidth="sm">
+      <Typography component="div">
+        <Paper elevation={3} className={classes.paper}>
+          <h4 className={classes.congratulations}>CONGRATULATIONS!!!</h4>
+          <p className={classes.congratulations}>You have been successfully registered.</p>
+          <hr width='80%' align="center" color='lightgrey'></hr>
+          <p align='center'>This token number is mailed to your registered e-mail ID</p>
+          <h2 className={classes.token} align='center'>TOKEN NUMBER</h2>
+        </Paper>
+      </Typography>
+      </Container>
+    </div>
+  );
 }
-
-export default TokenDisplay
