@@ -10,6 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
+import Container from '@material-ui/core/Container'
 import { Link } from 'react-router-dom'
 import TokenDisplay from './TokenDisplay'
 import Confirm from './Confirm'
@@ -30,48 +31,30 @@ const SingleForm = () => {
       spacing: 5,
     },
     formCard: {
-      width: '96vw',
-      boxShadow: '2px 2px 10px 0px gray',
-      borderRadius: '20px',
-      padding: '0px',
-      paddingTop: '14px',
-      paddingBottom: '14px',
-      margin: '0px',
-      marginLeft: '2vw',
-      maxWidth: '600px',
+      borderRadius: '2',
+      padding: '14px 10px',
     },
     TextField: {
       padding: 0,
-      margin: 8,
       spacing: 5,
-      width: '92vw',
-      maxWidth: 'calc(580px - 2vw)',
-      marginLeft: '2vw'
+      margin: '5px 0px',
+      width: '100%',
     },
     InputLabel: {
       padding: 5,
-      margin: 10,
-      marginLeft: '2vw',
-      width: '92vw',
-      maxWidth: 'calc(580px - 2vw)',
+      width: '100%',
       spacing: 5
     },
     Select: {
       padding: 5,
-      margin: 5,
-      marginLeft: '2vw',
       spacing: 5,
-      width: '92vw',
-      maxWidth: 'calc(580px - 2vw)',
+      width: '100%',
     },
     Checkbox: {
       padding: 10,
-      margin: 10,
       spacing: 10,
-      marginLeft: '2vw',
     },
     Button: {
-      marginLeft: '2vw',
       backgroundColor: 'black',
       color: 'white',
       marginTop: theme.spacing(0),
@@ -196,48 +179,50 @@ const SingleForm = () => {
         <br />
         <br />
         <br />
-        <Paper elevation={3} className={classes.formCard}>
-          <form autoComplete="off" onSubmit={handleSubmission} >
-            <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
-            value={nameInput} onChange={handleNameInputChange} />
-            <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
-            value={emailInput} onChange={handleEmailInputChange} />
+        <Container maxWidth="sm">
+          <Paper elevation={3} className={classes.formCard}>
+            <form autoComplete="off" onSubmit={handleSubmission} >
+              <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
+              value={nameInput} onChange={handleNameInputChange} wid />
+              <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
+              value={emailInput} onChange={handleEmailInputChange} />
 
-            {/*Dropdopwn for events*/}
-            <FormControl required className={classes.formControl}>
-              <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
-              <Select
-              className={classes.Select}
-              labelId="event-label"
-              id="events"
-              value={choosenEvent}
-              onChange={handleChangeEvent}
-              input={<Input />}
-              >
-              <MenuItem value="" disabled>Events</MenuItem>
-              {sportsEvents.map(event=> (
-                <MenuItem key={event} value={event}>
-                {event}
-                </MenuItem>
-              ))}
-              </Select>
-            </FormControl>
+              {/*Dropdopwn for events*/}
+              <FormControl variant="outlined" className={classes.formControl} required>
+                <InputLabel className={classes.InputLabel} id="event-label">Events</InputLabel>
+                <Select
+                className={classes.Select}
+                labelId="event-label"
+                id="events"
+                value={choosenEvent}
+                onChange={handleChangeEvent}
+                input={<Input />}
+                >
+                <MenuItem value="" disabled>Events</MenuItem>
+                {sportsEvents.map(event=> (
+                  <MenuItem key={event} value={event}>
+                  {event}
+                  </MenuItem>
+                ))}
+                </Select>
+              </FormControl>
 
-            {/*-------------------*/}
-            <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
-            value={collegeInput} onChange={handleCollegeInputChange} />
-            <FormControlLabel id="stay-label"
-            control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
-            label="Check here if you need accommodation"
-            />
-            {/*---Submit button---*/}
-            <br />
-            <Button className={classes.Button} variant="contained" type="submit">
-              Submit
-            </Button>
-            {/*------------------*/}
-          </form>
-        </Paper>
+              {/*-------------------*/}
+              <TextField className={classes.TextField} id="college" label="College" variant="outlined" required 
+              value={collegeInput} onChange={handleCollegeInputChange} />
+              <FormControlLabel id="stay-label"
+              control={<Checkbox className={classes.Checkbox} color="default" id="stay-check" value="stayNeeded" checked={stayInput} onChange={handleStayInputChange} />}
+              label="Check here if you need accommodation"
+              />
+              {/*---Submit button---*/}
+              <br />
+              <Button className={classes.Button} variant="contained" type="submit">
+                Submit
+              </Button>
+              {/*------------------*/}
+            </form>
+          </Paper>
+        </Container>
       </React.Fragment>
     )
 

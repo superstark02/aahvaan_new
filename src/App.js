@@ -183,7 +183,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     color: 'white',
     backgroundColor: 'black',
-    paddingBottom: '13px',
   },
   buttonUp: {
     color: 'white',
@@ -349,8 +348,8 @@ export default function ButtonAppBar() {
         
         <div className={classes.lower}>
           <HashLink smooth to="/#top">
-            <Button href="" className={classes.buttonUp} style={{width: '50px', fontSize: '20px'}}>
-              <img src={Logo} width="50px" height="60px" alt="Aahvaan Logo" />
+            <Button href="" className={classes.buttonUp} style={{width: '25px', fontSize: '20px'}}>
+              <img src={Logo} width="25px" height="34px" alt="Aahvaan Logo" />
             </Button>
           </HashLink>
         </div> 

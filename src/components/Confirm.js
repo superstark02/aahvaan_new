@@ -48,7 +48,7 @@ const Confirm = ({ data }) => {
       </TableContainer>
     )
   } else {
-    // For team regisTableRowations.
+    // For team registration.
     return (
       <TableContainer component={Paper}>
         <Table>
