@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -14,7 +16,14 @@ import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUsers, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
+import img from 'E:/Downloads/20180327074549_IMG_6866-01.jpg';
 import Logo from './_img/logo.png'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Bg from './_img/contentBg.svg'
+import PlayersImage from './_img/PlayersImage.svg'
 
 // import the custon CSS
 import './styles/index.css'
@@ -59,40 +68,39 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '14px',
   },
   navBar: {
-    padding: '13px',
+    padding: '0',
+    margin:0,
+    width:'100%',
     backgroundColor: 'black',
-    opacity: '0.75',
     height: '10vh',
     zIndex: '1',
-  },
-  navButtonContact: {
     position: 'absolute',
-    top: '2.5vh',
-    minTop: '10px',
-    right: '18px',
-    color: 'white',
-    border: '1px solid white',
-    opacity: '1',
-    fontSize: '20px',
-    zIndex: '2',
+    opacity:'1',
   },
-  navButtonAbout: {
-    position: 'absolute',
-    top: '2.5vh',
-    minTop: '10px',
-    right: '183px',
-    color: 'white',
-    border: '1px solid white',
-    opacity: '1',
-    fontSize: '20px',
-    zIndex: '2',
+  navButton: {
+    height:'auto',
+    width:'auto',
+    fontSize: '17px',
+    position:'relative',
+    color:'white',
+    float:'right',
+    marginTop:'20px',
+    marginRight:'20px',
+    opacity:'1',
+  },
+  containerAbout:{
+    width:'auto',
+    height:'auto',
+    backgroundColor:'white',
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   about: {
-    backgroundColor: '#eeeeee',
-    padding: '20px 0px 20px 0px',
+    backgroundImage: `url(${Bg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    marginBottom: '40px',
   },
   content: {
     padding: '35px 8vw 35px 8vw',
@@ -168,12 +176,12 @@ const useStyles = makeStyles(theme => ({
     zIndex: 2,
   },
   sponsorsDiv: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'white',
     margin: '0px',
   },
   upper: {
-    backgroundColor: 'lightgray',
-    color: 'black',
+    backgroundColor: '#343A40',
+    color: 'white',
     padding: '2%',
     display: 'flex',
     alignItems: 'stretch',
@@ -182,10 +190,19 @@ const useStyles = makeStyles(theme => ({
   lower: {
     textAlign: 'center',
     color: 'white',
-    backgroundColor: 'black',
+    backgroundColor: '#212529',
   },
   buttonUp: {
     color: 'white',
+  },
+  sponser_root: {
+    width: '100%',
+    margin:'50px',
+    padding:'50px',
+  },
+  sponser_heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
@@ -210,46 +227,35 @@ export default function ButtonAppBar() {
   }, [index]);
 
   return (
-    <div className="app">
-
+    <div className="app" id="top">
       {/*---------Navbar----------------*/}
-      <div id="top">
-        <div className={classes.navBar} position="sticky">
-        </div>
-      </div>
-      <div id="navbar-content">
-        <Typography className={classes.root}>
-          <HashLink smooth to="/#about"><Button className={classes.navButtonAbout}>About</Button></HashLink>
-          <HashLink smooth to="/#contact"><Button className={classes.navButtonContact}>Contact Us</Button></HashLink>
-        </Typography>
+      <div className={classes.navBar}>
+        <HashLink smooth to="/#about"><div className={classes.navButton}><b>CONTACT US</b></div></HashLink>
+        <HashLink smooth to="/#contact"><div className={classes.navButton}><b>ABOUT</b></div></HashLink>
       </div>
       {/*-------------------------------*/}
 
       {/*----------Overlay--------------*/}
-      <div className="overlay-text-container" align="center">
-        <h1 className="overlay-text">
-          AAHVAAN
-        </h1>
-      </div>
-      <div className="overlay-bg">
-      </div>
-      <Paper>
-        <Gallery
-          style={{
-            background: "grey",
-            height: "90vh",
-            width: '100%',
-          }}
-          index={index}
-          onRequestChange={i => {
-            setIndex(i);
-          }}
-        >
-          {images.map(image => (
-            <GalleryImage objectFit="contain" key={image} src={image} className="image"/>
-          ))}
-        </Gallery>
-      </Paper>
+      <Carousel autoPlay={true}>
+        <div className={classes.overlay}>
+          <img src={img} />
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg" />
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg" />
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-640-480-4.jpg" />
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-640-480-5.jpg" />
+        </div>
+        <div>
+          <img src="http://lorempixel.com/output/cats-q-c-640-480-6.jpg" />
+        </div>
+      </Carousel>
       {/*-------------------------------*/}
 
       {/*-----------About section-------------*/}
@@ -258,7 +264,7 @@ export default function ButtonAppBar() {
           ABOUT
         </Typography>
         <div className={classes.content}>
-          <img style={{float: "right", margin: "0px 0px 0px 25px",}} src="https://images.unsplash.com/photo-1504305754058-2f08ccd89a0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" width="350px" height="200px" />
+          <img style={{float: "right", margin: "0px 0px 0px 25px", width: '380px', height: 'auto'}} src={PlayersImage} />
           Aahvaan is a platform for you to go beyond conventional fest advertising. The team
           wants to give you value for your money and has built an extensive network to ensure
           just that. With us, you wil be able to advertise outside campus and tap audiences of
@@ -271,8 +277,6 @@ export default function ButtonAppBar() {
       <div className={classes.register}>
         <Typography variant="h5" className={classes.title} align='center'>
           REGISTER
-          <br />
-          <FontAwesomeIcon icon={faChevronCircleDown} />
         </Typography>
       </div>
 
@@ -318,19 +322,29 @@ export default function ButtonAppBar() {
       {/*------------------------------------*/}
 
       {/*------- Bar for sponsers-------*/}
-      <div className={classes.sponsorsDiv}>
-        <Typography variant="h5" color="textSecondary" align="center">
-          Past Sponsers
-        </Typography>
-        <Typography variant="h6" align="center">
-          <div className="sponsors">
-            <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
-          </div>
-        </Typography>
+      <div className={classes.root}>
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+          <Typography className={classes.heading}>Past Sponsers</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <div className={classes.sponsorsDiv}>
+              <Typography variant="h6" align="center">
+                <div className="sponsors">
+                  <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+                </div>
+              </Typography>
+            </div>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       </div>
       {/*------------------------------------*/}
 

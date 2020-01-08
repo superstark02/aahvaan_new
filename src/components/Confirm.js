@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, TableBody, TableContainer, TableRow, TableCell, Paper } from '@material-ui/core'
+import { Table, TableBody, TableContainer, TableRow, TableCell, Paper, Container } from '@material-ui/core'
 
 const generateMembersList = (members) => {
   return(
@@ -16,78 +16,82 @@ const Confirm = ({ data }) => {
   if (data.single) {
     // For single registrations.
     return (
-      <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell align='right'>Registration type:</TableCell>
-              <TableCell align='left'>Single</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Name:</TableCell>
-              <TableCell align='left'>{data.name}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Email-id:</TableCell>
-              <TableCell align='left'>{data.email}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Event:</TableCell>
-              <TableCell align='left'>{data.events}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>College:</TableCell>
-              <TableCell align='left'>{data.college}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Accommodation wanted:</TableCell>
-              <TableCell align='left'>{data.stay ? 'Yes' : 'No'}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Container maxWidth="sm">
+        <TableContainer component={Paper}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell align='right'><strong>Registration type:</strong></TableCell>
+                <TableCell align='left'>Single</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Name:</strong></TableCell>
+                <TableCell align='left'>{data.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Email-id:</strong></TableCell>
+                <TableCell align='left'>{data.email}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Event:</strong></TableCell>
+                <TableCell align='left'>{data.events}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>College:</strong></TableCell>
+                <TableCell align='left'>{data.college}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Accommodation wanted:</strong></TableCell>
+                <TableCell align='left'>{data.stay ? 'Yes' : 'No'}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     )
   } else {
     // For team registration.
     return (
-      <TableContainer component={Paper}>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell align='right'>Registration type:</TableCell>
-              <TableCell align='left'>Team</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Name (Leader):</TableCell>
-              <TableCell align='left'>{data.name}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Email-id (Leader):</TableCell>
-              <TableCell align='left'>{data.email}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Event:</TableCell>
-              <TableCell align='left'>{data.events}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Members Count:</TableCell>
-              <TableCell align='left'>{data.teamMemberCount}</TableCell>
-            </TableRow>
-            <TableRow colSpan="2">
-              <TableCell align='right'>Members Name:</TableCell>
-            </TableRow>
-            {generateMembersList(data.teamMemberName)}
-            <TableRow>
-              <TableCell align='right'>College:</TableCell>
-              <TableCell align='left'>{data.college}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell align='right'>Accommodation wanted:</TableCell>
-              <TableCell align='left'>{data.stay ? 'Yes' : 'No'}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Container maxWidth="sm">
+        <TableContainer component={Paper}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell align='right'><strong>Registration type:</strong></TableCell>
+                <TableCell align='left'>Team</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Name (Leader):</strong></TableCell>
+                <TableCell align='left'>{data.name}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Email-id (Leader):</strong></TableCell>
+                <TableCell align='left'>{data.email}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Event:</strong></TableCell>
+                <TableCell align='left'>{data.events}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Members Count:</strong></TableCell>
+                <TableCell align='left'>{data.teamMemberCount}</TableCell>
+              </TableRow>
+              <TableRow colSpan="2">
+                <TableCell align='right'><strong>Members Name:</strong></TableCell>
+              </TableRow>
+              {generateMembersList(data.teamMemberName)}
+              <TableRow>
+                <TableCell align='right'><strong>College:</strong></TableCell>
+                <TableCell align='left'>{data.college}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align='right'><strong>Accommodation wanted:</strong></TableCell>
+                <TableCell align='left'>{data.stay ? 'Yes' : 'No'}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
     )
   }
 }

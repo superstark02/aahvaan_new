@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import Confirm from './Confirm'
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded'
 import TokenDisplay from './TokenDisplay'
 
 const TeamForm = () => {
@@ -136,8 +137,6 @@ const TeamForm = () => {
 
   // Event-handler for proceed button click
   const submitForm = () => {
-    console.log('Clicked')
-    console.log(data)
     /*
     -
     - Write the code to push the userInput to database inside this function.
@@ -176,8 +175,8 @@ const TeamForm = () => {
       <React.Fragment>
         <div className={classes.navBar}>
           <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
-            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
-              Home
+            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white'}}>
+              <HomeRoundedIcon fontSize='large' />
             </Button>
           </h1>
         </div>

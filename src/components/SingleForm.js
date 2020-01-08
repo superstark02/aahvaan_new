@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container'
 import { Link } from 'react-router-dom'
 import TokenDisplay from './TokenDisplay'
 import Confirm from './Confirm'
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded'
 
 const SingleForm = () => {
   const useStyles = makeStyles(theme => ({
@@ -156,8 +157,6 @@ const SingleForm = () => {
 
   // Event-handler for proceed button click
   const submitForm = () => {
-    console.log('Clicked')
-    console.log(data)
     /*
     -
     - Write the code to push the userInput to database inside this function.
@@ -171,8 +170,8 @@ const SingleForm = () => {
       <React.Fragment>
         <div className={classes.navBar}>
           <h1 align="center" style={{backgroundColor: 'black', color: 'white', padding: '5px 0px 5px 0px'}}>
-            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white', border: '2px solid white'}}>
-              Home
+            <Button component={ Link } to="/" variant="contained" style={{backgroundColor: 'black', color: 'white'}}>
+              <HomeRoundedIcon fontSize='large' />
             </Button>
           </h1>
         </div>
@@ -183,7 +182,7 @@ const SingleForm = () => {
           <Paper elevation={3} className={classes.formCard}>
             <form autoComplete="off" onSubmit={handleSubmission} >
               <TextField className={classes.TextField} id="name" label="Name" variant="outlined" required
-              value={nameInput} onChange={handleNameInputChange} wid />
+              value={nameInput} onChange={handleNameInputChange} />
               <TextField className={classes.TextField} id="email" label="Email" type="email" variant="outlined" required
               value={emailInput} onChange={handleEmailInputChange} />
 
