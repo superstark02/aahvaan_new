@@ -2,28 +2,36 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {Gallery, GalleryImage } from 'react-gesture-gallery';
 import { createMuiTheme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faChevronCircleDown} from '@fortawesome/free-solid-svg-icons'
-import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft } from '@fortawesome/free-brands-svg-icons'
-import img from 'E:/Downloads/20180327074549_IMG_6866-01.jpg';
+import { faUser, faUsers, faPhoneAlt, faAddressCard, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Logo from './_img/logo.png'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+// Import button components.
+import DownloadButton from './components/DownloadButton'
+import RegisterButton from './components/RegisterButton'
+
+// Import the images
 import Bg from './_img/contentBg.svg'
 import PlayersImage from './_img/PlayersImage.svg'
+import img1 from './_img/1.jpg'
+import img2 from './_img/2.jpg'
+import img3 from './_img/3.jpg'
+import img4 from './_img/4.jpg'
+import img5 from './_img/5.jpg'
+import img6 from './_img/6.jpg'
+import img7 from './_img/7.jpg'
 
 // import the custon CSS
 import './styles/index.css'
@@ -175,34 +183,42 @@ const useStyles = makeStyles(theme => ({
     borderWidth: 'thick ',
     zIndex: 2,
   },
-  sponsorsDiv: {
-    backgroundColor: 'white',
-    margin: '0px',
+  sponsorHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+  sponsorDiv: {
+    width: '100%',
+    textAlign: 'center',
   },
   upper: {
     backgroundColor: '#343A40',
     color: 'white',
-    padding: '2%',
-    display: 'flex',
-    alignItems: 'stretch',
-    height: '20vh',
+    padding: '10px',
   },
   lower: {
     textAlign: 'center',
     color: 'white',
     backgroundColor: '#212529',
   },
+  footer: {
+    width:'100%',
+    margin:0,
+    height:'40vh',
+    background:'#495057',
+    borderRadius:'0',
+  },
+  footerTable:{
+    padding:'4%',
+    color:'white',
+    width:'100%',
+  },
+  trr:{
+    margin:'0',
+    padding:'40%',
+  },
   buttonUp: {
     color: 'white',
-  },
-  sponser_root: {
-    width: '100%',
-    margin:'50px',
-    padding:'50px',
-  },
-  sponser_heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 
@@ -229,33 +245,97 @@ export default function ButtonAppBar() {
   return (
     <div className="app" id="top">
       {/*---------Navbar----------------*/}
-      <div className={classes.navBar}>
-        <HashLink smooth to="/#about"><div className={classes.navButton}><b>CONTACT US</b></div></HashLink>
-        <HashLink smooth to="/#contact"><div className={classes.navButton}><b>ABOUT</b></div></HashLink>
-      </div>
-      {/*-------------------------------*/}
+      <div>
+        <div className="navBar" id="grad1">
+          <HashLink smooth to="/#about"><div className={classes.navButton}><b>ABOUT</b></div></HashLink>
+          <HashLink smooth to="/#contact"><div className={classes.navButton}><b>CONTACT US</b></div></HashLink>
+        </div>
 
-      {/*----------Overlay--------------*/}
-      <Carousel autoPlay={true}>
-        <div className={classes.overlay}>
-          <img src={img} />
+        <div className="slideshow-container">
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img1} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img2} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img3} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img4} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img5} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img6} style={{width: '100%'}} />
+          </div>
+
+          <div className="mySlides fade">
+            <div className="text">AAHVAAN 2020</div>
+            <div className="text-sub">Some Text Suitable As Subtitle</div>
+            <div className="button">
+              <DownloadButton />
+              <RegisterButton />
+            </div>
+            <img src={img7} style={{width: '100%'}} />
+          </div>
         </div>
-        <div>
-          <img src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg" />
+
+        <br></br>
+
+        <div style={{textAlign:'center'}}>
+          <span className="dot"></span>
+          <span className="dot"></span> 
+          <span className="dot"></span> 
+          <span className="dot"></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
         </div>
-        <div>
-          <img src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg" />
-        </div>
-        <div>
-          <img src="http://lorempixel.com/output/cats-q-c-640-480-4.jpg" />
-        </div>
-        <div>
-          <img src="http://lorempixel.com/output/cats-q-c-640-480-5.jpg" />
-        </div>
-        <div>
-          <img src="http://lorempixel.com/output/cats-q-c-640-480-6.jpg" />
-        </div>
-      </Carousel>
+      </div>
       {/*-------------------------------*/}
 
       {/*-----------About section-------------*/}
@@ -274,7 +354,7 @@ export default function ButtonAppBar() {
       {/*-------------------------------------*/}
 
       {/*---------Form Components-------------*/}
-      <div className={classes.register}>
+      <div id="register" className={classes.register}>
         <Typography variant="h5" className={classes.title} align='center'>
           REGISTER
         </Typography>
@@ -307,15 +387,15 @@ export default function ButtonAppBar() {
       {/*------- Bar for sponsers-------*/}
       <div className={classes.sponsorsDiv}>
         <Typography variant="h5" color="textSecondary" align="center">
-          Our Sponsers
+          Our Sponsors
         </Typography>
         <Typography variant="h6" align="center">
           <div className="sponsors">
-            <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
-            <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+            <FontAwesomeIcon icon={faAdobe} />
+            <FontAwesomeIcon icon={faAmazon} />
+            <FontAwesomeIcon icon={faApple} />
+            <FontAwesomeIcon icon={faGoogle} />
+            <FontAwesomeIcon icon={faMicrosoft} />
           </div>
         </Typography>
       </div>
@@ -329,17 +409,17 @@ export default function ButtonAppBar() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-          <Typography className={classes.heading}>Past Sponsers</Typography>
+            <Typography className={classes.sponsorHeading}>Past Sponsors</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <div className={classes.sponsorsDiv}>
+            <div className={classes.sponsorDiv}>
               <Typography variant="h6" align="center">
                 <div className="sponsors">
-                  <FontAwesomeIcon icon={faAdobe} />&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faAmazon} />&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faApple} />&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faGoogle} />&nbsp;&nbsp;
-                  <FontAwesomeIcon icon={faMicrosoft} />&nbsp;&nbsp;
+                  <FontAwesomeIcon icon={faAdobe} />
+                  <FontAwesomeIcon icon={faAmazon} />
+                  <FontAwesomeIcon icon={faApple} />
+                  <FontAwesomeIcon icon={faGoogle} />
+                  <FontAwesomeIcon icon={faMicrosoft} />
                 </div>
               </Typography>
             </div>
@@ -351,13 +431,40 @@ export default function ButtonAppBar() {
       {/*------------Footer------------------*/}
       <div>
         <div id="contact" className={classes.upper} align="right">
-          <Typography style={{width: '100px',}}>For help or any queries:</Typography>
-          <p style={{width: 'calc(100vw - 320px'}}></p>
-          <Typography style={{width: '220px',}}>
-            Contact-1: 8373-773747
-            <br />
-            Contact-2: 8373-773747
-          </Typography>
+            <table className={classes.footerTable} >
+              <tbody>
+                <tr>
+                  <th>CONTACT US</th>
+                  <th>HELP</th>
+                  <th>INFORMATION</th>
+                </tr>
+                <tr>
+                  <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Tarun Kumar - 7210499455</td>
+                  <td rowSpan='3'><FontAwesomeIcon icon={faAddressCard} />&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
+                  <td><FontAwesomeIcon icon={faInfo} />&nbsp;About Us</td>
+                </tr>
+                <tr>
+                  <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Mrigank Singh - 9756597885</td>
+                  <td>Council</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Shivam Gupta - 9518094013</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Ayush Garg - 99907 66015</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style={{textAlign: 'center', fontSize: '30px',}}>
+              <FontAwesomeIcon icon={faFacebook} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faInstagram} />&nbsp;&nbsp;
+              <FontAwesomeIcon icon={faTwitter} />&nbsp;&nbsp;
+            </p>
         </div>
         
         <div className={classes.lower}>

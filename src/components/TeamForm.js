@@ -53,18 +53,13 @@ const TeamForm = () => {
     },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      width: '98%',
     },
     buttonDiv: {
-      borderRadius: '5px',
-      position: 'relative',
-      top: '40px',
-      left: '0px',
-      width: 'calc(100vw - 8px)',
-      padding: '8px',
-      margin: '5px',
+      marginTop: '20px',
+      marginBottom: '20px',
       display: 'flex',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
     },
   }));
 
@@ -170,7 +165,7 @@ const TeamForm = () => {
     return inputFields
   }
 
-  if (formView == 1) {
+  if (formView === 1) {
     return(
       <React.Fragment>
         <div className={classes.navBar}>
@@ -233,7 +228,7 @@ const TeamForm = () => {
       </React.Fragment>
     )
 
-  } else if (formView == 2) {
+  } else if (formView === 2) {
 
     return(
       <React.Fragment>
@@ -243,21 +238,23 @@ const TeamForm = () => {
         <br />
         <br />
         <br />
-        <Confirm data={data} />
 
-        <div className={classes.buttonDiv}>
-          <Button style={{width: '20vw', color: 'white', backgroundColor: 'black',}} variant="contained" color="primary" onClick={handleEdit}>
-            Edit
-          </Button>
-          <Button style={{width: '60vw', color: 'white', backgroundColor: 'orangered',}} variant="contained" color="secondary" onClick={submitForm}>
-            Proceed
-          </Button>
-        </div>
+        <Container maxWidth="sm">
+          <Confirm data={data} />
+          <div className={classes.buttonDiv}>
+            <Button style={{width: '30vw', maxWidth: '150px', color: 'white', backgroundColor: 'black'}} variant="contained" color="primary" onClick={handleEdit}>
+              Edit
+            </Button>
+            <Button style={{width: '50vw', maxWidth: '350px', color: 'white', backgroundColor: 'orangered',}} variant="contained" color="secondary" onClick={submitForm}>
+              Proceed
+            </Button>
+          </div>
+        </Container>
         
       </React.Fragment>
     )
 
-  } else if (formView == 3) {
+  } else if (formView === 3) {
 
     return (
       <TokenDisplay />
