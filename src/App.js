@@ -10,13 +10,14 @@ import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUsers, faPhoneAlt, faAddressCard, faInfo } from '@fortawesome/free-solid-svg-icons'
-import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram, faTwitter, fa } from '@fortawesome/free-brands-svg-icons'
+import { faPhoneAlt, faAddressCard, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import Logo from './_img/logo.png'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CountUp from 'react-countup';
 
 // Import the images
 import PlayersImage from './_img/PlayersImage.png'
@@ -234,6 +235,27 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'transparent',
     height: '60vh',
     width: '310px',
+  },
+  paper: {
+    height: '30vw',
+    width: '30vw',
+    maxWidth: 200,
+    maxHeight: 200,
+    minWidth: 160,
+    minHeight: 160,
+    textAlign:'center',
+    fontSize:'30px',
+    border:'solid',
+    borderRadius:'50%',
+    borderWidth:'10px',
+    borderColor:'orange'
+  },
+  control: {
+    backgroundColor:'grey'
+  },
+  count:{
+    paddingTop:'70px',
+    color:'grey'
   }
 }));
 
@@ -256,6 +278,15 @@ export default function ButtonAppBar() {
     }, 3000);
     return () => clearInterval(timer);
   }, [index]);
+
+  /*
+  Fuctions for counter
+  */
+  const [spacing, setSpacing] = React.useState(2);
+
+  const handleChange1 = event => {
+    setSpacing(Number(event.target.value));
+  };
 
   return (
     <div className="app" id="top">
@@ -289,19 +320,7 @@ export default function ButtonAppBar() {
           ))}
         </Gallery>
       </Paper>
-      {/*
-        <div className="mySlides fade">
-          <div className="text">AAHVAAN 2020</div>
-          <div className="text-sub">Some Text Suitable As Subtitle</div>
-          <div className="button">
-            <DownloadButton />
-            <RegisterButton />
-          </div>
-          <img src={img4} style={{width: '100%'}} />
-        </div>
-        */}
       {/*-------------------------------*/}
-
 
       {/*-----------About section-------------*/}
       <div id="about" className={classes.about}>
@@ -323,7 +342,7 @@ export default function ButtonAppBar() {
       </div>
       {/*-------------------------------------*/}
 
-      {/*---------Form Components-------------*/}
+      {/*---------Registration Part-------------*/}
       <div id="register" className={classes.register} style={{ display: 'flex', flexWrap: 'wrap' }}>
        <div style={{width:'100%'}}> <Typography variant="h5" className={classes.title} align='center' style={{ width: '100%' }}>
           REGISTER
@@ -356,6 +375,29 @@ export default function ButtonAppBar() {
         </div>
       </div>
       {/*-------------------------------------*/}
+
+      {/*-----------Counter section-------------*/}
+      <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '25px', flexWrap: 'wrap', background: 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898',
+      backgroundBlendMode: 'multiply,multiply', padding: '10px 0px'}}>
+        <Paper className={classes.paper}>
+          <div className={classes.count}>
+            <CountUp end={500}/>
+          </div>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <div className={classes.count}>
+            <CountUp end={500}/>
+          </div>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <div className={classes.count}>
+            <CountUp end={500}/>
+          </div>
+        </Paper>
+      </div>
+      {/*---------------------------------------*/}
 
       {/*------- Bar for sponsers-------*/}
       <div className={classes.sponsorsDiv}>
@@ -433,7 +475,7 @@ export default function ButtonAppBar() {
               </tr>
             </tbody>
           </table>
-          <p style={{ textAlign: 'center', fontSize: '30px', }}>
+          <p style={{ textAlign: 'center', fontSize: '30px'}}>
             <FontAwesomeIcon icon={faFacebook} />&nbsp;&nbsp;
               <FontAwesomeIcon icon={faInstagram} />&nbsp;&nbsp;
               <FontAwesomeIcon icon={faTwitter} />&nbsp;&nbsp;
