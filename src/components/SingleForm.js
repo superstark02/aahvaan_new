@@ -78,12 +78,12 @@ const SingleForm = () => {
   // Logic for the drop-down menu.
   // List of events to choose from. Change it to add the events.
   const sportsEvents = [
-    'Event1',
-    'Event2',
-    'Event3',
-    'Event4',
-    'Event5',
-    'Event6'
+    'Athletics',
+    'Badminton',
+    'Chess',
+    'Powerlifting',
+    'Table Tennis',
+    'Tennis',
   ];
 
   const [choosenEvent, setChoosenEvent] = React.useState('')

@@ -143,12 +143,16 @@ const TeamForm = () => {
   // Logic for the drop-down menu.
   // List of events to choose from. Change it to add the events.
   const sportsEvents = [
-    'Event1',
-    'Event2',
-    'Event3',
-    'Event4',
-    'Event5',
-    'Event6'
+    'Athletics',
+    'Badminton',
+    'BasketBall',
+    'Cricket',
+    'Football',
+    'Handball',
+    'Kabaddi',
+    'Table Tennis',
+    'Tennis',
+    'Volleyball',
   ];
     
   const [choosenEvent, setChoosenEvent] = React.useState('')

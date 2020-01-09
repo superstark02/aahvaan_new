@@ -5,7 +5,7 @@ import { HashLink } from 'react-router-hash-link'
 const RegisterButton = () => {
   return (
     <HashLink smooth to="/#register">
-      <Button style={{border: '4px solid white', fontSize: '15px', fontWeight: '500', color: 'white'}} variant="outlined">REGISTER</Button>
+      <Button style={{border: '4px solid white', fontSize: '15px', fontWeight: '500', color: 'white', textDecoration: 'none'}} variant="outlined">REGISTER</Button>
     </HashLink>
   )
 }
