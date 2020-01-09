@@ -18,9 +18,6 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-// Import CSS
-import './styles/Carousel.css'
-
 // Import the images
 import PlayersImage from './_img/PlayersImage.png'
 import RegisterBg from './_img/bg2.svg'
@@ -81,14 +78,14 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '14px',
   },
   navBar: {
-    padding: '0',
-    margin: 0,
+    background: 'linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1))',
     width: '100%',
-    backgroundColor: 'black',
-    height: '10vh',
+    height: '60px',
     zIndex: '1',
     position: 'absolute',
-    opacity: '1',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   navButton: {
     height: 'auto',
@@ -97,7 +94,6 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     color: 'white',
     float: 'right',
-    marginTop: '20px',
     marginRight: '20px',
     opacity: '1',
   },
@@ -264,7 +260,7 @@ export default function ButtonAppBar() {
   return (
     <div className="app" id="top">
       {/*---------Navbar----------------*/}
-      <div className="navBar">
+      <div className={classes.navBar}>
         <HashLink smooth to="/#about"><div className={classes.navButton}>ABOUT</div></HashLink>
         <HashLink smooth to="/#contact"><div className={classes.navButton}>CONTACT US</div></HashLink>
       </div>
