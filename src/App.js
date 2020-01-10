@@ -33,6 +33,7 @@ import img4 from './_img/4.jpg'
 import img5 from './_img/5.jpg'
 import img6 from './_img/6.jpg'
 import img7 from './_img/7.jpg'
+import img8 from './_img/8.jpg'
 
 // import the custon CSS
 import './styles/index.css'
@@ -45,6 +46,7 @@ const images = [
   img5,
   img6,
   img7,
+  img8,
 ];
 
 const theme = createMuiTheme({
@@ -82,7 +84,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '14px',
   },
   navBar: {
-    background: 'linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1))',
+    // background: 'linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,1))',
+    background: 'rgba(0, 0, 0, 0.3)',
     width: '100%',
     height: '60px',
     zIndex: '1',
@@ -173,11 +176,16 @@ const useStyles = makeStyles(theme => ({
   },
   overlay: {
     position: 'absolute',
+    top: '60px',
     width: '100%',
     height: '90vh',
-    backgroundColor: 'black',
+    backgroundColor: 'transparent',
     zIndex: 1,
-    opacity: 0.5,
+    textAlign: 'center',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textcontainer: {
     position: 'absolute',
@@ -268,6 +276,7 @@ const useStyles = makeStyles(theme => ({
   modalFade: {
     color: 'white',
     backgroundColor: '#343A40',
+    textAlign: 'center',
     padding: '30px',
     borderRadius: '2px',
   },
@@ -284,7 +293,7 @@ export default function ButtonAppBar() {
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      if (index === 6) {
+      if (index === images.length - 1) {
         setIndex(0);
       } else {
         setIndex(prev => prev + 1);
@@ -361,6 +370,26 @@ export default function ButtonAppBar() {
         </div>
       </div>
 
+      {/*-------- Overlay -----------------*/}
+      <div className={classes.overlay}>
+        <div style={{width: '100%', height: 'calc(100vh - 60px)', backgroundColor: 'rgba(0, 0, 0, 0.3)', paddingTop: '20vh'}}>
+          <div style={{color: 'white', fontSize: '60px', width: '100%'}}>AAHVAAN 2020</div>
+          <div style={{color: 'white', fontSize: '30px', width: '100%'}}>The sports fest of DTU</div>
+          <div style={{width: '100%', marginTop: '20px'}}>
+            <Button variant="outlined" style={{ border: '2px solid white', color: 'white', margin: '10px' }}>
+              DOWNLOAD
+            </Button>
+            <HashLink smooth to="/#register">
+              <Button variant="outlined" style={{ border: '2px solid white', color: 'white', margin: '10px', textDecoration: 'none' }}>
+                <p style={{textDecoration: 'none'}}>REGISTER</p>
+              </Button>
+            </HashLink>
+          </div>
+        </div>
+      </div>
+      {/*-------------------------------*/}
+
+      {/*-------- Carousel -----------------*/}
       <Paper className={classes.CarouselPaper}>
         <Gallery
           enableIndicators={false}
@@ -385,6 +414,7 @@ export default function ButtonAppBar() {
           ))}
         </Gallery>
       </Paper>
+      {/*-------------------------------*/}
       {/*-------------------------------*/}
 
       {/*-----------About section-------------*/}
@@ -515,44 +545,44 @@ export default function ButtonAppBar() {
             <tbody>
               <tr>
                 <th>CONTACT US</th>
-                <th>HELP</th>
-                <th>INFORMATION</th>
+                <th style={{textAlign: 'right'}}>ADDRESS</th>
               </tr>
               <tr>
-                <td onClick={ () => {handleOpen(0)} }>
-                  <FontAwesomeIcon icon={faPhoneAlt} />
-                  &nbsp;
-                  {contactData[0].name}
+                <td>
+                  <Button onClick={ () => {handleOpen(0)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
+                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    &nbsp;
+                    {contactData[0].name}
+                  </Button>
                 </td>
-                <td rowSpan='3'><FontAwesomeIcon icon={faAddressCard} />&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
-                <td><FontAwesomeIcon icon={faInfo} />&nbsp;About Us</td>
+                <td rowSpan='3' style={{textAlign: 'right'}}><FontAwesomeIcon icon={faAddressCard} />&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
               </tr>
               <tr>
-                <td onClick={ () => {handleOpen(1)} }>
-                  <FontAwesomeIcon icon={faPhoneAlt} />
-                  &nbsp;
-                  {contactData[1].name}
+                <td>
+                  <Button onClick={ () => {handleOpen(1)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
+                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    &nbsp;
+                    {contactData[1].name}
+                  </Button>
                 </td>
-                <td>Council</td>
-                <td></td>
               </tr>
               <tr>
-                <td onClick={ () => {handleOpen(2)} }>
-                  <FontAwesomeIcon icon={faPhoneAlt} />
-                  &nbsp;
-                  {contactData[2].name}
+                <td>
+                  <Button onClick={ () => {handleOpen(2)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
+                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    &nbsp;
+                    {contactData[2].name}
+                  </Button>
                 </td>
-                <td></td>
-                <td></td>
               </tr>
               <tr>
-                <td onClick={ () => {handleOpen(3)} }>
-                  <FontAwesomeIcon icon={faPhoneAlt} />
-                  &nbsp;
-                  {contactData[3].name}
+                <td>
+                  <Button onClick={ () => {handleOpen(3)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
+                    <FontAwesomeIcon icon={faPhoneAlt} />
+                    &nbsp;
+                    {contactData[3].name}
+                  </Button>
                 </td>
-                <td></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
