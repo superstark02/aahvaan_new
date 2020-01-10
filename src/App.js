@@ -11,15 +11,18 @@ import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt, faAddressCard, faInfo } from '@fortawesome/free-solid-svg-icons'
-import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import Logo from './_img/logo.png'
+import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CountUp from 'react-countup';
 
 // Import the images
+import Logo from './_img/logo.png'
 import PlayersImage from './_img/PlayersImage.png'
 import RegisterBg from './_img/bg2.svg'
 import Football from './_img/football.png'
@@ -256,7 +259,18 @@ const useStyles = makeStyles(theme => ({
   count:{
     paddingTop:'70px',
     color:'grey'
-  }
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalFade: {
+    color: 'white',
+    backgroundColor: '#343A40',
+    padding: '30px',
+    borderRadius: '2px',
+  },
 }));
 
 export default function ButtonAppBar() {
@@ -288,12 +302,63 @@ export default function ButtonAppBar() {
     setSpacing(Number(event.target.value));
   };
 
+  //---------------- Functions for contact modals -----------------
+  // Data to be displayed in modals.
+  const contactData = [
+    {
+      name: 'Tarun Kumar',
+      phone: '72104 99455',
+      desig: 'Developer',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+    {
+      name: 'Mrigank Singh',
+      phone: '97565 97885',
+      desig: 'Desig',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+    {
+      name: 'Shivam Gupta',
+      phone: '95180 094013',
+      desig: 'Desig',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+    {
+      name: 'Ayush Garg',
+      phone: '99907 66015',
+      desig: 'Desig',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+  ]
+  const [open, setOpen] = React.useState(false)
+  const [dataIndex, setDataIndex] = React.useState(0)
+
+  const handleOpen = (i) => {
+    setDataIndex(i)
+    setOpen(true)
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  //---------------------------------------------------------------
+
   return (
     <div className="app" id="top">
       {/*---------Navbar----------------*/}
       <div className={classes.navBar}>
         <HashLink smooth to="/#about"><div className={classes.navButton}>ABOUT</div></HashLink>
         <HashLink smooth to="/#contact"><div className={classes.navButton}>CONTACT US</div></HashLink>
+        <div className={classes.navButton}>
+          <a target="_blank" style={{color: 'white'}} href="https://www.facebook.com/aahvaandtu/">
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+        </div>
+        <div className={classes.navButton}>
+          <a target="_blank" style={{color: 'white'}} href="https://www.instagram.com/aahvaandtu/">
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </div>
       </div>
 
       <Paper className={classes.CarouselPaper}>
@@ -446,7 +511,7 @@ export default function ButtonAppBar() {
       {/*------------Footer------------------*/}
       <div>
         <div id="contact" className={classes.upper} align="right">
-          <table className={classes.footerTable} >
+          <table className={classes.footerTable}>
             <tbody>
               <tr>
                 <th>CONTACT US</th>
@@ -454,33 +519,78 @@ export default function ButtonAppBar() {
                 <th>INFORMATION</th>
               </tr>
               <tr>
-                <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Tarun Kumar - 7210499455</td>
+                <td onClick={ () => {handleOpen(0)} }>
+                  <FontAwesomeIcon icon={faPhoneAlt} />
+                  &nbsp;
+                  {contactData[0].name}
+                </td>
                 <td rowSpan='3'><FontAwesomeIcon icon={faAddressCard} />&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
                 <td><FontAwesomeIcon icon={faInfo} />&nbsp;About Us</td>
               </tr>
               <tr>
-                <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Mrigank Singh - 9756597885</td>
+                <td onClick={ () => {handleOpen(1)} }>
+                  <FontAwesomeIcon icon={faPhoneAlt} />
+                  &nbsp;
+                  {contactData[1].name}
+                </td>
                 <td>Council</td>
                 <td></td>
               </tr>
               <tr>
-                <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Shivam Gupta - 9518094013</td>
+                <td onClick={ () => {handleOpen(2)} }>
+                  <FontAwesomeIcon icon={faPhoneAlt} />
+                  &nbsp;
+                  {contactData[2].name}
+                </td>
                 <td></td>
                 <td></td>
               </tr>
               <tr>
-                <td><FontAwesomeIcon icon={faPhoneAlt} />&nbsp;Ayush Garg - 99907 66015</td>
+                <td onClick={ () => {handleOpen(3)} }>
+                  <FontAwesomeIcon icon={faPhoneAlt} />
+                  &nbsp;
+                  {contactData[3].name}
+                </td>
                 <td></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
           <p style={{ textAlign: 'center', fontSize: '30px'}}>
-            <FontAwesomeIcon icon={faFacebook} />&nbsp;&nbsp;
-              <FontAwesomeIcon icon={faInstagram} />&nbsp;&nbsp;
-              <FontAwesomeIcon icon={faTwitter} />&nbsp;&nbsp;
-            </p>
+            <a target="_blank" style={{color: 'white'}} href="https://www.facebook.com/aahvaandtu/">
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+            &nbsp;&nbsp;
+            <a target="_blank" style={{color: 'white'}} href="https://www.instagram.com/aahvaandtu/">
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            &nbsp;&nbsp;
+          </p>
         </div>
+
+        {/*------------- Modals for contacts -------------------*/}
+        <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500
+        }}
+        >
+          <Fade in={open} className={classes.modalFade}>
+            <div>
+              <img src={contactData[dataIndex].imgSrc} width="60px" height="60px"></img>
+              <h2>{contactData[dataIndex].name}</h2>
+              <p>{contactData[dataIndex].desig}</p>
+              <p>{contactData[dataIndex].phone}</p>
+            </div>
+          </Fade>
+        </Modal>
+        {/*-----------------------------------------------------*/}
 
         <div className={classes.lower}>
           <HashLink smooth to="/#top">
