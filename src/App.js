@@ -20,6 +20,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 // Import the images
 import Logo from './_img/logo.png'
@@ -154,12 +155,6 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     padding: theme.spacing(0, 3),
   },
-  paper: {
-    maxWidth: 700,
-    margin: `${theme.spacing(1)}px auto`,
-    padding: theme.spacing(2),
-    float: 'right'
-  },
   registerpaper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -250,23 +245,28 @@ const useStyles = makeStyles(theme => ({
   paper: {
     height: '30vw',
     width: '30vw',
-    maxWidth: 200,
-    maxHeight: 200,
-    minWidth: 160,
-    minHeight: 160,
+    maxWidth: 160,
+    maxHeight: 160,
+    minWidth: 140,
+    minHeight: 140,
     textAlign:'center',
     fontSize:'30px',
     border:'solid',
     borderRadius:'50%',
     borderWidth:'10px',
-    borderColor:'orange'
+    borderColor:'orange',
   },
   control: {
     backgroundColor:'grey'
   },
   count:{
-    paddingTop:'70px',
+    paddingTop: '40px',
     color:'grey'
+  },
+  countLabel: {
+    width: '100%',
+    textAlign:'center',
+    fontSize:'15px',
   },
   modal: {
     display: "flex",
@@ -302,40 +302,41 @@ export default function ButtonAppBar() {
     return () => clearInterval(timer);
   }, [index]);
 
-  /*
-  Fuctions for counter
-  */
-  const [spacing, setSpacing] = React.useState(2);
+  //----------- Functions for counter -----------
+  const [didViewCountUp, setDidViewCountUp] = React.useState(false)
 
-  const handleChange1 = event => {
-    setSpacing(Number(event.target.value));
-  };
+  const onVisibilityChange = (isVisible) => {
+    if (isVisible) {
+      setDidViewCountUp(true)
+    }
+  }
+  //---------------------------------------------
 
   //---------------- Functions for contact modals -----------------
   // Data to be displayed in modals.
   const contactData = [
     {
-      name: 'Tarun Kumar',
-      phone: '72104 99455',
-      desig: 'Developer',
+      name: 'Ayush Garg',
+      phone: '99907 66015',
+      desig: 'Treasurer',
       imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
     },
     {
       name: 'Mrigank Singh',
       phone: '97565 97885',
-      desig: 'Desig',
+      desig: 'Joint Treasurer',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+    {
+      name: 'Tarun Kumar',
+      phone: '72104 99455',
+      desig: 'Technical Head',
       imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
     },
     {
       name: 'Shivam Gupta',
-      phone: '95180 094013',
-      desig: 'Desig',
-      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
-    },
-    {
-      name: 'Ayush Garg',
-      phone: '99907 66015',
-      desig: 'Desig',
+      phone: '95180 94013',
+      desig: 'Conveynor',
       imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
     },
   ]
@@ -379,9 +380,9 @@ export default function ButtonAppBar() {
             <Button variant="outlined" style={{ border: '2px solid white', color: 'white', margin: '10px' }}>
               DOWNLOAD
             </Button>
-            <HashLink smooth to="/#register">
-              <Button variant="outlined" style={{ border: '2px solid white', color: 'white', margin: '10px', textDecoration: 'none' }}>
-                <p style={{textDecoration: 'none'}}>REGISTER</p>
+            <HashLink style={{textDecoration: 'none'}} smooth to="/#register">
+              <Button variant="contained" style={{ border: '2px solid white', color: 'black', margin: '10px', textDecoration: 'none' }}>
+                REGISTER
               </Button>
             </HashLink>
           </div>
@@ -472,26 +473,40 @@ export default function ButtonAppBar() {
       {/*-------------------------------------*/}
 
       {/*-----------Counter section-------------*/}
-      <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '25px', flexWrap: 'wrap', background: 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898',
-      backgroundBlendMode: 'multiply,multiply', padding: '10px 0px'}}>
-        <Paper className={classes.paper}>
-          <div className={classes.count}>
-            <CountUp end={500}/>
-          </div>
-        </Paper>
+      <VisibilitySensor onChange={onVisibilityChange} offset={{
+        top:
+          10
+      }} delayedCall>
+        <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '25px', flexWrap: 'wrap', background: 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898',
+        backgroundBlendMode: 'multiply,multiply', padding: '10px 0px'}}>
+          <Paper className={classes.paper}>
+            <div className={classes.count}>
+              <CountUp start={0} end={didViewCountUp ? 12 : 0} duration={3} />
+            </div>
+            <div className={classes.countLabel}>
+              <Typography>Events</Typography>
+            </div>
+          </Paper>
 
-        <Paper className={classes.paper}>
-          <div className={classes.count}>
-            <CountUp end={500}/>
-          </div>
-        </Paper>
+          <Paper className={classes.paper}>
+            <div className={classes.count}>
+              <CountUp start={0} end={didViewCountUp ? 490000 : 0} duration={3} />
+            </div>
+            <div className={classes.countLabel}>
+              <Typography>Reach</Typography>
+            </div>
+          </Paper>
 
-        <Paper className={classes.paper}>
-          <div className={classes.count}>
-            <CountUp end={500}/>
-          </div>
-        </Paper>
-      </div>
+          <Paper className={classes.paper}>
+            <div className={classes.count}>
+              <CountUp start={0} end={didViewCountUp ? 40000 : 0} duration={3} />
+            </div>
+            <div className={classes.countLabel}>
+              <Typography>Footfall</Typography>
+            </div>
+          </Paper>
+        </div>
+      </VisibilitySensor>
       {/*---------------------------------------*/}
 
       {/*------- Bar for sponsers-------*/}
