@@ -258,18 +258,42 @@ const useStyles = makeStyles(theme => ({
     backgroundColor:'grey'
   },
   count:{
-    paddingTop: '40px',
-    color:'grey'
-  },
-  countLabel: {
-    width: '100%',
     textAlign:'center',
-    fontSize:'15px',
+    background:'#212529',
+    fontSize:'30px',
+    color:'white',
+    borderWidth:'0',
+  },
+  countLabel:{
+    textAlign:'center',
+    background:'#212529',
+    fontSize:'30px',
+    color:'white',
+    borderWidth:'0',
+    
   },
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  rootToken: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    color:'white',
+    background:'orange'
+  },
+  titleToken: {
+    flexGrow: 1,
+    textAlign:'center',
+    color:'white',
+  },
+  input:{
+    flexGrow: 1,
+    textAlign:'left',
+    color:'white'
   },
   modalFade: {
     color: 'white',
@@ -472,18 +496,39 @@ export default function ButtonAppBar() {
       {/*-------------------------------------*/}
 
       {/*-----------Counter section-------------*/}
-      <VisibilitySensor onChange={onVisibilityChange} offset={{
+      <div className={classes.rootToken}>
+      <div style={{background:'#212529',borderBottom:'solid',borderBottomColor:'orange',borderBottomWidth:'1px'}}>
+      <Toolbar>
+          <Typography variant='h7' className={classes.titleToken} >
+            ENTER YOUR TOKEN NUMBER
+          </Typography>
+          <Typography className={classes.input}>
+            <TextField 
+              variant="filled"
+              style={{ margin: 8 , width:'60%',background:'grey'}}
+              placeholder="Token Number"
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }} />
+          </Typography>
+          <Typography>
+              <Button className={classes.menuButton} style={{width:'20%'}}>GO</Button>
+          </Typography>
+        </Toolbar>
+        </div>
+        <VisibilitySensor onChange={onVisibilityChange} offset={{
         top:
           10
       }} delayedCall>
-        <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '25px', flexWrap: 'wrap', background: 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898',
+        <div style={{display: 'flex', justifyContent: 'space-around', marginBottom: '25px', flexWrap: 'wrap', background:'#212529',
         backgroundBlendMode: 'multiply,multiply', padding: '10px 0px'}}>
           <Paper className={classes.paper}>
             <div className={classes.count}>
               <CountUp start={0} end={didViewCountUp ? 12 : 0} duration={3} />
             </div>
             <div className={classes.countLabel}>
-              <Typography>Events</Typography>
+              <Typography variant='h6'>Events</Typography>
             </div>
           </Paper>
 
@@ -492,7 +537,7 @@ export default function ButtonAppBar() {
               <CountUp start={0} end={didViewCountUp ? 490000 : 0} duration={3} />
             </div>
             <div className={classes.countLabel}>
-              <Typography>Reach</Typography>
+              <Typography variant='h6'>Reach</Typography>
             </div>
           </Paper>
 
@@ -501,11 +546,12 @@ export default function ButtonAppBar() {
               <CountUp start={0} end={didViewCountUp ? 40000 : 0} duration={3} />
             </div>
             <div className={classes.countLabel}>
-              <Typography>Footfall</Typography>
+              <Typography variant='h6'>Footfall</Typography>
             </div>
           </Paper>
         </div>
       </VisibilitySensor>
+    </div>
       {/*---------------------------------------*/}
 
       {/*------- Bar for sponsers-------*/}
