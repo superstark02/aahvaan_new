@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhoneAlt, faAddressCard, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faAdobe, faApple, faGoogle, faAmazon, faMicrosoft, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -31,7 +31,6 @@ import img1 from './_img/1.jpg'
 import img2 from './_img/2.jpg'
 import img3 from './_img/3.jpg'
 import img4 from './_img/4.jpg'
-import img5 from './_img/5.jpg'
 import img6 from './_img/6.jpg'
 import img7 from './_img/7.jpg'
 import img8 from './_img/8.jpg'
@@ -44,7 +43,6 @@ const images = [
   img2,
   img3,
   img4,
-  img5,
   img6,
   img7,
   img8,
@@ -316,6 +314,12 @@ export default function ButtonAppBar() {
   // Data to be displayed in modals.
   const contactData = [
     {
+      name: 'Tarun Kumar',
+      phone: '72104 99455',
+      desig: 'Technical Head',
+      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
+    },
+    {
       name: 'Ayush Garg',
       phone: '99907 66015',
       desig: 'Treasurer',
@@ -325,12 +329,6 @@ export default function ButtonAppBar() {
       name: 'Mrigank Singh',
       phone: '97565 97885',
       desig: 'Joint Treasurer',
-      imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
-    },
-    {
-      name: 'Tarun Kumar',
-      phone: '72104 99455',
-      desig: 'Technical Head',
       imgSrc: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/WPVG_icon_2016.svg/1024px-WPVG_icon_2016.svg.png',
     },
     {
@@ -381,7 +379,7 @@ export default function ButtonAppBar() {
               DOWNLOAD
             </Button>
             <HashLink style={{textDecoration: 'none'}} smooth to="/#register">
-              <Button variant="contained" style={{ border: '2px solid white', color: 'black', margin: '10px', textDecoration: 'none' }}>
+              <Button variant="contained" style={{ backgroundColor: '#F9712D', color: 'white', margin: '10px', textDecoration: 'none' }}>
                 REGISTER
               </Button>
             </HashLink>
@@ -420,7 +418,7 @@ export default function ButtonAppBar() {
 
       {/*-----------About section-------------*/}
       <div id="about" className={classes.about}>
-        <Typography variant="h5" className={classes.title} style={{ color: '#143D7A' }} align='center'>
+        <Typography variant="h5" className={classes.title} style={{ color: '#143D7A', fontSize: '40px' }} align='center'>
           ABOUT
         </Typography>
         <div className={classes.content}>
@@ -440,13 +438,14 @@ export default function ButtonAppBar() {
 
       {/*---------Registration Part-------------*/}
       <div id="register" className={classes.register} style={{ display: 'flex', flexWrap: 'wrap' }}>
-       <div style={{width:'100%'}}> <Typography variant="h5" className={classes.title} align='center' style={{ width: '100%' }}>
-          REGISTER
-        </Typography>
+        <div style={{width:'100%' }}>
+          <Typography variant="h5" className={classes.title} align='center' style={{ width: '100%', fontSize: '40px'}}>
+            REGISTER
+          </Typography>
         </div>
         <img src={RegisterBg} style={{width: '100%'}} />
           
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', position: 'absolute', marginTop:'50px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', position: 'absolute', marginTop:'80px' }}>
           <div className='football-image' style={{width:'60%',display:'flex', justifyContent:'center'}}>
             <img src={Football} style={{width: '40%'}} />
           </div>
@@ -527,8 +526,8 @@ export default function ButtonAppBar() {
       {/*------------------------------------*/}
 
       {/*------- Bar for sponsers-------*/}
-      <div className={classes.root}>
-        <ExpansionPanel>
+      <div className={classes.root} style={{backgroundColor: '#343A40'}}>
+        <ExpansionPanel style={{backgroundColor: '#343A40', color: 'white', border: '0px'}}>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2a-content"
@@ -559,21 +558,21 @@ export default function ButtonAppBar() {
           <table className={classes.footerTable}>
             <tbody>
               <tr>
-                <th>CONTACT US</th>
-                <th style={{textAlign: 'right'}}>ADDRESS</th>
+                <th style={{textAlign: 'center'}}>CONTACT US</th>
+                <th style={{textAlign: 'center'}}>ADDRESS</th>
               </tr>
               <tr>
-                <td>
+                <td style={{textAlign: 'center'}}>
                   <Button onClick={ () => {handleOpen(0)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
                     <FontAwesomeIcon icon={faPhoneAlt} />
                     &nbsp;
                     {contactData[0].name}
                   </Button>
                 </td>
-                <td rowSpan='3' style={{textAlign: 'right'}}><FontAwesomeIcon icon={faAddressCard} />&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
+                <td rowSpan='3' style={{textAlign: 'center'}}><FontAwesomeIcon icon={faMapMarkerAlt} />&nbsp;&nbsp;Delhi Technological University<br></br>Shahbad Daulatpur,Main Bawana Road<br></br>Delhi-110042.</td>
               </tr>
               <tr>
-                <td>
+                <td style={{textAlign: 'center'}}>
                   <Button onClick={ () => {handleOpen(1)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
                     <FontAwesomeIcon icon={faPhoneAlt} />
                     &nbsp;
@@ -582,7 +581,7 @@ export default function ButtonAppBar() {
                 </td>
               </tr>
               <tr>
-                <td>
+                <td style={{textAlign: 'center'}}>
                   <Button onClick={ () => {handleOpen(2)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
                     <FontAwesomeIcon icon={faPhoneAlt} />
                     &nbsp;
@@ -591,7 +590,7 @@ export default function ButtonAppBar() {
                 </td>
               </tr>
               <tr>
-                <td>
+                <td style={{textAlign: 'center'}}>
                   <Button onClick={ () => {handleOpen(3)} } style={{color: 'white', backgroundColor: '#141A20', width: '100%', maxWidth: '200px'}}>
                     <FontAwesomeIcon icon={faPhoneAlt} />
                     &nbsp;
@@ -640,7 +639,7 @@ export default function ButtonAppBar() {
         <div className={classes.lower}>
           <HashLink smooth to="/#top">
             <Button href="" className={classes.buttonUp} style={{ width: '25px', fontSize: '20px' }}>
-              <img src={Logo} width="25px" height="34px" alt="Aahvaan Logo" />
+              <img src={Logo} width="25px" height="28px" alt="Aahvaan Logo" />
             </Button>
           </HashLink>
         </div>
